@@ -1,0 +1,1530 @@
+#!/bin/bash
+#Linux Cheat Sheet
+
+#what is Linux?
+Linux is the operating system which sits in the middle of your hardware and users
+
+//---------------------------------------------------------------------------------------//
+
+##Linux File System structure and Description
+/boot - contain file that is load by boot loader
+/root - user home directory
+/dev - system devices (egs disk cdrom , speaker , flushdrive , keyboard)
+/etc - configuration file
+/bin --> /usr/bin - everyday user command
+/sbin --> /usr/bin - system/filesystem command
+/opt - optional add on application (Not part on OS)
+/proc- Running Process(only exist in memory)
+/lib - /usr/lin - c programming library files needed by commands and apps
+/tmp - directory with temp file
+/var - system logs
+/run - system daemon that start very early
+/mnt - to mount external filesystem
+/media - for cdrom mount
+
+//---------------------------------------------------------------------------------------//
+
+#Linux File type
+- Regular File
+d directory
+l link
+c special file or device file
+s socket
+p Named pipe
+b Block device
+
+##File Commands:
+
+cd / - root directory   
+ls -> directory listing and 
+ls -l -r, ls -rl, ls -lr
+l - long , r - reverse ls- view file 
+'ll' -> command that displays detailed directory listings
+ls -ltr -> display listing in the form of reverse order while sorting 
+ls -al -> formatted listing with hidden files
+cd dir - change directory to dir
+cd -> change to home
+pwd -> show current directory
+mkdir dir -> create a directory dir
+rm file -> delete file
+rm -r dir -> delete directory dir
+rm -f file -> force remove file
+rm -rf dir -> force remove directory dir *
+cp file1 file2 -> copy file1 to file2
+cp -r dir1 dir2 -> copy dir1 to dir2; create dir2 if it doesn't exist
+mv file1 file2 -> rename or move file1 to file2 if file2 is an existing directory, moves file1 into directory file2
+ln -s file link -> create symbolic link link to file
+touch file -> create or update file
+cat > file -> places standard input into file
+more file -> output the contents of file
+head file -> output the first 10 lines of file
+tail file -> output the last 10 lines of file
+tail -f file -> output the contents of file as it grows, starting with the last 10 lines
+open file  -  xdg-open file name
+passwd - chnage passwod
+sudo apt-get update && sudo apt-get upgrade - Auto update command - 
+nmcli dev wifi show-password - WIFI passwod
+ls /etc/NetworkManager/system-connections/
+    sudo cat ls /etc/NetworkManager/system-connections/connections-name
+zip Cheatsheet.zip Cheatsheet/ -- zip [filename.zip] [filename]
+##Pipe Command
+| - A pipe command is used by the shell to connect the output of one command directly to the input of another commands
+
+    * E.g 
+        1.  ls -ltr | more -  more output the contents of file (One page at a time)
+        2.  ls -ltr | less -  provide text file one screen at a time
+        2.  ls -ltr | tail -1 - tail is gives you the last line of a file 
+        3.  ls -ltr | head /head -10 - output the first 10 lines of file
+
+//---------------------------------------------------------------------------------------//
+
+##wildcards 
+
+Wildcards allow you to use a single specification to indicate a
+number of resources whose names match the wildcard pattern.
+OR 
+that can be substitue for any of a class of characterstics in a search
+* - represent zero or more character
+? - represent a single character
+[] - represent a range of character
+
+- touch abcd{1..4}-xjf 
+* - rm abcd* // rm *xjf
+? - ls -ltr ?bcd*
+[] - ls -l *[cd]*
+
+//---------------------------------------------------------------------------------------//
+
+##Process Management:
+
+ps -> display your currently active processes
+top -> display all running processes
+kill pid -> kill process id pid
+killall proc -> kill all processes named proc *
+bg -> lists stopped or background jobs; resume a stopped job in the background
+fg -> brings the most recent job to foreground
+fg n -> brings job n to the foreground
+
+//---------------------------------------------------------------------------------------//
+##File Permissions:
+
+chmod octal file -> change the permissions of file to octal, which can be found separately for user, group, and world by adding:
+4 -> read (r)
+2 -> write (w)
+1 -> execute (x)
+
+
+* Each permission(rwx) has three level of permission
+
+    * u - user= yourself 
+    * g - group = can be people in the same programming 
+    * o - other = everyon the system
+    
+* Commands to change permission
+    * chmod
+
+###Examples:
+
+chmod 777 -> read, write, execute for all
+chmod 755 -> rwx for owner, rx for group and world
+
+* The table below assign numbers to permission types
+
+    Number      Permissions type        symbol
+    0           No Permissions           ---
+    1           Execute                  --x
+    2           write                    -w-
+    3           Execute + write          -wx
+    4           read                     r--
+    5           read+execute             r-x
+    6           read+write               rw-
+    7           read+write+execute       rwx
+
+
+
+
+##Some file permission examples:
+
+777 - all can read/write/execute (full access).
+755 - owner can read/write/execute, group/others can read/execute.
+644 - owner can read/write, group/others can read only.
+444 - all can read only 
+764 - the owner can read, write, and execute.
+000 - no permission
+
+##Common permissions settings:
+
+777 - directories with proper permissions on files in directory, use this one very carefully
+755 - web store folder, CGI scripts
+751 - log folder
+701 - webalizer and modlogan folders
+666 - data files
+644 - configuration files (files not updated by scripts, html, gif,etc...)
+
+//---------------------------------------------------------------------------------------//
+
+##File Ownership
+chown - change ownership
+Ownership of a file can be changed with the chown command. On most versions of Unix this can
+only be done by the super-user, i.e. a normal user can’t give away ownership of their files. chown is
+used as below, where # represents the shell prompt for the super-user:
+
+Syntax
+chown [options] user[:group] file (SVR4)
+chown [options] user[.group] file (BSD)
+
+Examples
+# chown new_owner file
+
+chgrp - change group
+Anyone can change the group of files they own, to another group they belong to, with the chgrp
+command.Syntax
+
+Example
+#chgrp [options] group file
+
+
+//-----------------------------------------------------------------------//
+
+## ACL (Access Control list)
+"setfacl" and "getfacl" are used for setting up ACL and showing ACL respectively.What is ACL ?
+Access control list (ACL) provides an additional, more flexible permission mechanism for file systems. It is designed to assist with UNIX file permissions.
+ACL allows you to give permissions for any user or group to any disc resource
+
+List of commands for setting up ACL :
+1) To add permission for a user
+setfacl -m "u:user:permissions" /path/to/file
+
+2) To add permissions for a group
+setfacl -m "g:group:permissions" /path/to/file 
+
+3) To allow all files or directories to inherit ACL entries from the directory it is within
+setfacl -rm "entry" /path/to/dir
+
+4) To remove a specific entry
+setfacl -x "entry" /path/to/file
+
+5) To remove all entries
+setfacl -b path/to/file
+
+
+//-----------------------------------------------------------------//
+
+##SSH:
+
+ssh user@host -> connect to host as user // ssh ctssnigdh-Latitude-E5450
+ssh -p port user@host -> connect to host on port port as user
+ssh-copy-id user@host -> add your key to host for user to enable a keyed or passwordless login
+
+//---------------------------------------------------------------------------------------//
+
+##Searching:
+
+grep pattern files -> search for pattern in files
+grep -r pattern dir -> search recursively for pattern in dir
+command | grep pattern -> search for pattern in the output of command
+find . -name "kramer"
+locate <File name> -find all instances of file
+
+//---------------------------------------------------------------------------------------//
+
+##System Info:
+
+date 
+cal -> show this month's calendar
+uptime -> show current uptime
+w -> display who is online
+whoami -> who you are logged in as
+finger user -> display information about user
+uname -a -> show kernel information
+cat /proc/cpuinfo -> cpu information
+cat /proc/meminfo -> memory information
+man command -> show the manual for command
+df -> show disk usage
+du -> show directory space usage
+free -> show memory and swap usage
+whereis app -> show possible locations of app
+which app -> show which app will be run by default
+
+//---------------------------------------------------------------------------------------//
+##Compression:
+
+tar cf file.tar files -> create a tar named file.tar containing files
+tar xf file.tar -> extract the files from file.tar
+tar czf file.tar.gz files -> create a tar with Gzip compression
+tar xzf file.tar.gz -> extract a tar using Gzip
+tar cjf file.tar.bz2 -> create a tar with Bzip2 compression
+tar xjf file.tar.bz2 -> extract a tar using Bzip2
+gzip file -> compresses file and renames it to file.gz
+gzip -d file.gz -> decompresses file.gz back to file
+
+//---------------------------------------------------------------------------------------//
+##Network:
+
+ping host -> ping host and output results
+whois domain -> get whois information for domain
+dig domain -> get DNS information for domain
+dig -x host -> reverse lookup host
+wget file -> download file
+wget -c file -> continue a stopped download
+
+//---------------------------------------------------------------------------------------//
+##Installation:
+
+dpkg -i pkg.deb -> install a package (Debian)
+rpm -Uvh pkg.rpm -> install a package (RPM)
+
+//---------------------------------------------------------------------------------------//
+##Install from source:
+
+./configure
+make
+make install
+
+//---------------------------------------------------------------------------------------//
+##Shortcuts:
+
+Ctrl+C -> halts the current command
+Ctrl+Z -> stops the current command, resume with
+fg in the foreground or bg in the background
+Ctrl+D -> log out of current session, similar to exit
+Ctrl+W -> erases one word in the current line
+Ctrl+U -> erases the whole line
+Ctrl+R -> type to bring up a recent command
+!! - repeats the last command
+exit -> log out of current session
+
+//---------------------------------------------------------------------------------------//
+##Adding text into files
+echo - displaying lines of text or string which are passed as arguments on the command line. 
+cat - view content inside the file
+
+#Input and Output Redirects (>, >>, <, stdin, stdout and stderr)
+
+* There are 3 Redirects in Linux
+    1. Standard input (stdin)
+    2. Standard output (stdout)
+    3. Standard error (stderr)
+
+* Output (stdout) -1
+    1. the output of a command can be routed to a file using > symbol
+
+        * E.g  ls -l > listing 
+                pwd > findpath
+    echo - "displaying lines of text or string which are passed as arguments on the command line" > helloworld
+
+    2. if using the same file for additional output or to append to the same file then use >> 
+        * E.g  ls -la >> listing
+                echo "Hello world" > findpath 
+
+    echo - "displaying lines of text or string which are passed as arguments on the command line" >> helloworld
+
+* Input (stdin) - 0
+    1.  Input is used when feeding file content to a file 
+        * E.g  cat < listing 
+                mail -s "office memo" abc@yopmail.com < memoletter
+
+* error (stderr) -2
+    1. If the command produced any error on the screen then it is considered as (stderr-2)
+        * E.g  ls -l /root 2> errorfile
+
+##Standard Output of a file 
+"tee" - tee command is used to store and view (both at the same time) the output of any command
+
+    * E.g - ls -ltr | tee file2
+    * E.g - ls -ltr | tee a file 2  (-a, append to the given FILEs, do not overwrite)
+
+        
+//---------------------------------------------------------------------------------------//
+##Text Processor Commands
+1.cut  - The cut command in UNIX is a command for cutting out the sections from each
+        line of files and writing the result to standard output. 
+    
+    * cut filename  = doesnot work
+    * cut --version = checkversion
+    * cut -c1 filename = list one character
+    * cut -c1,2,6 = pick and chose character 
+    * cut -c1-3,6-7 filename = list specific range of character 
+    * cut -b1-2 filename = list by byte size
+    * cut -d: -f 6 /etc/passwd = list first 6th columns seperated by 
+    * cut -d: -f 6-7 /etc/passwrd = list first 6 and 7th columns seperated by
+    * ls -l | cut -c2-4
+
+2.awk - awk commnd is a utility/langugae designed for data extraction.
+        -most of the time it is used to extract field from a file or from an output
+
+    * awk -W version  = checkversion
+    * awk '{print $1}' filename = list 1st field from file
+    * ls -l | awk '{print $1,$3}' =  list 1st and 3nd field of ls output 
+    * ls -l | awk '{print $NF}' = print last columns / last field output
+    * awk '/jerry/' {print} seinfeld-characters = search for specific word
+    * awk -F: '{print $1}' /etc/passwd = output only 1st field of /etc/passwd
+    * echo filename| awk '{$2=adam , print$0}' = Replace words with field
+    * cat seinfeld-characters.txt | '{$2=snigdh ; print$0}' = replace words with Fields
+    * awk 'length($0) > 15' file = Get line that have more than 15 byte size
+    * ls -l | awk '{if ($9=="seinfeld") print $0;}' = get the field matching seinfeld in /home/iafzal
+
+3.grep/egrep - "global regualr expression print" processes text line by line 
+                - and print any line match a specified pattern
+
+    * grep --version or grep --help = Check version or help
+    * grep keyword file - grep Seinfeld seinfeld-characters.txt = Seach for a keyword from a file
+    * grep cts-snigdh /etc/passwd = 
+    * grep -c keyword file = Search for a keyword and count
+    * grep -i keyword file = Seach for a keyword & ignores lowercase and uppercase
+    * grep -n keyword file = Display the matchline lines & their line number
+    * grep -v keyword file = Display everything but keyword
+    * grep -v seinfeld  seinfeld-characters.txt | awk '{print $1}' = display one field columns content
+    * grep -v seinfeld  seinfeld-characters.txt | awk '{print $1}' | cut -c1-2 = print first 3line
+    * ls -l | grep desktop = Search for keyboard for any keyword
+    * egrep -i "keyword|keyword" file = 
+
+
+4.sort/uniq - Sort command sort in alhabetic order/uniq command fileter out the repeated or duplicate
+
+    * sort --version or wc --help = Check version or help
+    * sort file = sort the file aphabetic order
+    * sort -r file =  sort in reverse alphabetic order
+    * sort -k2 file = Sort by field number 
+    * uniq file  = Remove Duplicates
+    * sort file | uniq = Always sort file before using any uniq their line number 
+    * sort file | uniq -c = Sort file then uniq and list count
+
+5.wc - it reads either standard input of a file or a list of files and 
+        - "generate newline count", "word count","and byte count"   
+
+    * wc --version or  wc --help = Check version or help
+    * wc file = Check file line count, word count, and byte count
+    * wc -l file = get the number of file
+    * wc -c file =  byte count
+    * wc -w file =  words count
+    * wc DIRECTORY = NOT allowed
+    * ls -l | wc -l  = count the number of file 
+    * ls -l | grep drw
+    * grep keyword | wc -l = Numeber of Keywords Lines
+
+//---------------------------------------------------------------------------------------//
+##Compare two files
+comp  -> (Lines by lines)
+diff  -> (byte by bytes)
+
+##Combining and splitting files
+echo france > countries
+echo usa >> countries
+echo uae >> countries
+echo germany >> countries
+echo swiz >> countries
+echo japan>> countries
+    E.g - it split into 2 sep files
+split -l 2 countries sep
+
+
+
+//---------------------------------------------------------------------------------------//
+#Vi editor
+vi supplies commands for:-
+    * Inserting and deleting text
+    * Replacing text
+    * Moving around the file
+    * find and substiting String 
+    * Cutting and Pasting text
+
+
+##vi commands shortcut keys
+    $ vi <filename> — Open or edit a file.
+    i — Switch to Insert mode.
+    Esc — Switch to Command mode.
+    :w — Save and continue editing.
+    :wq or ZZ — Save and quit/exit vi.
+    :q! — Quit vi and do not save changes.
+    yy — Yank (copy) a line of text.
+    /wordname - it it will search you 
+    p — Paste a line of yanked text below the current line.
+    o — Open a new line under the current line.
+    O — Open a new line above the current line.
+    A — Append to the end of the line.
+    a — Append after the cursor’s current position.
+    I — Insert text at the beginning of the current line.
+    b — Go to the beginning of the word.
+    e — Go to the end of the word.
+    x — Delete a single character.
+    dd — Delete an entire line.
+    Xdd — Delete X number of lines.
+    Xyy — Yank X number of lines.
+    G — Go to the last line in a file.
+    XG — Go to line X in a file.
+    gg — Go to the first line in a file.
+    :num — Display the current line’s line number.
+    h — Move left one character.
+    j — Move down one line.
+    k — Move up one line.
+    l — Move right one character.
+
+//---------------------------------------------------------------------------------------//
+
+##User account Management
+useradd
+    * useradd -To create a new user in Linux. A different options can be used to modify userId, home directory
+etc.
+    * userdel -This command is used to delete the user. Please note this command alone will not delete the user
+home directory. You will have to use option –r to delete user home directory.
+
+    * groupadd -Creates a new group
+
+    * groupdel -Removes an existing group
+
+    * usermod - (usermod -G cts-akhil Panawar)Modify user attributes such as user home directory, user group, user ID etc
+
+    User Files
+    * /etc/passwd = This file has all user’s attributes
+    * /etc/shadow = This file contains encrypted user password and password policy
+    * /etc/group = All group and user group information
+
+
+##Enable passwd Ageing 
+chage [-d last day]
+chage [-m days]
+chage [-M maxdays]
+chage [-W warndays]
+chage [-I inactive]
+chage [-E expiredate] user
+
+##Switch user and sudo Access
+    * su - username
+    * sudo command
+    * visudo
+
+
+    File
+    * /etc/sudoers
+
+##Monitor User
+
+    * who 
+    * last | more // last | awk '{print $1}' | sort 
+    * W
+    * finger
+    * id
+
+##Talking to users
+    * users
+    * wall
+    * write
+
+#Active directories
+
+    * Active directory Microsoft
+    * IDM = Identity Manager
+    * WinBIND = used to linux to communite with windows (samba)
+    * openLaDAP (open source)
+
+#System utility commands
+    * uptime
+    * date
+    * uname
+    * which  ==/cd/usr/bin
+    * cal - calendar
+    * bc - calculator
+    * hostname
+
+#Process / Service Commands
+    * systemctl
+        is a new tool which is used to connect
+            systemctl start|stop|status servicename.service
+            systemctl enable servicename.service
+            systemctl restart |reload servicename.service
+            systemctl list-units --all
+
+    * ps
+        stands for process status it displays all the currently process in the running systems
+
+    * top
+        top commands is used to show the linux process and it provides a real time view of the running system
+
+            PID - show  task unique process id
+            USER - username of owner of task
+            PR - the "PR" field shows the scheduling prioity of the process from the perspective of the kernel
+            NI - represent a nice value of task . A Negative Nice value implies higher prioity and positve. 
+            VIRT -Total virtual memory used by the task
+            RES - Memory consumed by the process in RAM
+            SHR - represent the amount of shared memory used by the task 
+            S: - this field shows the process state in the single letter form
+            %CPU = represent the cpu usage
+            %MEM = shows the memory usage of task
+            TIME+ = CPU time 
+
+    * kill - command is used to terminate process manully
+
+    * crontab - is used to schedule task
+        * crontab  -e = edit the crontab
+        * crontab  -l = list the crontab entries
+        * crontab  -r = remove the crontab 
+        * crond = crontab daemon / sevice that Manages schedule
+
+    * at - is like crontab which allow you to schedule job only once
+        * at - HH:MM PM = schedule a job
+        * atq - list the at entries
+
+#system Monitoring
+
+    *top
+    *df
+    *dmesg
+    *iostat 1
+    *netstat
+    *free
+    *cat /proc/cpuinfo
+    *cat /proc/meminfo
+
+#System Maintenance Commands
+    * shutdown
+    * init 0-6
+    * reboot
+    * halts
+
+
+
+//---------------------------------------------------------------------------------------//
+
+#Shell scripting
+
+#kernel
+    kernel - interface between hardware and software
+
+#shell
+    its  like a container
+    interface between user nad keneral/OS
+    CLI is a shell
+    cat /etc/shells
+# /etc/shells: valid login shells
+
+#Type of Linux shells
+    * Gnome 
+    * KDE 
+         {Both of them are desktop gui enviroment}
+    * bash
+    * csh and tcsh
+    * ksh
+
+##Shell scripting
+
+    what is a shell script
+        a Shell script is an executable file containing multiple shells commands
+        that are executed seqeuetially
+
+            * shell (#!/bin/bash)
+            * comments (# comments)
+            * commands (echo , cp , grep etc)
+            * statements (if , while , for etc)
+
+
+##Nano editor Commands
+File handling
+Ctrl+S   	Save current file
+Ctrl+O	Offer to write file ("Save as")
+Ctrl+R	Insert a file into current one
+Ctrl+X	Close buffer, exit from nano
+
+Editing
+Ctrl+K   	Cut current line into cutbuffer
+Alt+6	Copy current line into cutbuffer
+Ctrl+U	Paste contents of cutbuffer
+Alt+T	Cut until end of buffer
+Ctrl+]	Complete current word
+Alt+3	Comment/uncomment line/region
+Alt+U	Undo last action
+Alt+E	Redo last undone action
+
+Search and replace
+Ctrl+Q   	Start backward search
+Ctrl+W	Start forward search
+Alt+Q	Find next occurrence backward
+Alt+W	Find next occurrence forward
+Alt+R	Start a replacing session
+
+Deletion
+Ctrl+H	Delete character before cursor      
+Ctrl+D	Delete character under cursor
+Alt+Bsp	Delete word to the left
+Ctrl+Del   	Delete word to the right
+Alt+Del	Delete current line
+
+Operations
+Ctrl+T   	Execute some command
+Ctrl+J	Justify paragraph or region
+Alt+J	Justify entire buffer
+Alt+B	Run a syntax check
+Alt+F	Run a formatter/fixer/arranger
+Alt+:	Start/stop recording of macro
+Alt+;	Replay macro
+
+Moving around
+Ctrl+B   	One character backward
+Ctrl+F	One character forward
+Ctrl+←	One word backward
+Ctrl+→	One word forward
+Ctrl+A	To start of line
+Ctrl+E	To end of line
+Ctrl+P	One line up
+Ctrl+N	One line down
+Ctrl+↑	To previous block
+Ctrl+↓	To next block
+Ctrl+Y	One page up
+Ctrl+V	One page down
+Alt+\	To top of buffer
+Alt+/	To end of buffer
+
+Special movement
+Alt+G    	Go to specified line
+Alt+]	Go to complementary bracket
+Alt+↑	Scroll viewport up
+Alt+↓	Scroll viewport down
+Alt+<	Switch to preceding buffer
+Alt+>	Switch to succeeding buffer
+
+Information
+Ctrl+C   	Report cursor position
+Alt+D	Report line/word/character count
+Ctrl+G	Display help text
+
+Various
+Alt+A	Turn the mark on/off
+Tab	Indent marked region
+Shift+Tab   	Unindent marked region
+Alt+V	Enter next keystroke verbatim
+Alt+N	Turn line numbers on/off
+Alt+P	Turn visible whitespace on/off
+Alt+X	Hide or unhide the help lines
+Ctrl+L	Refresh the screen
+
+
+run script
+    * ./file name
+    * /home/cts-snigdh/myscript/output-screen
+
+Input & Output // script
+    *read
+    *echo
+        
+          GNU nano 6.2                     input-output.sh                              
+    #!/bin/bash
+
+    #input-output file
+    a=`hostname`
+
+    echo hello my server name is $a
+    echo     
+    echo "What is your name" // asking question here
+    read  b 
+    echo
+    echo "what is your profession"
+    read  c
+    echo
+    echo Hello $b // outputing the container here
+    echo you profession $c is really good here
+    echo
+
+
+if-then script
+
+    * if then statements
+        if this happen = do this 
+        otherwide = do that
+
+    #!/bin/bash
+    count=100
+    if [ $count -eq 100 ]
+    then
+    echo Count is 100
+    else
+    echo Count is not 100
+    fi
+
+
+do while script
+    #!/bin/bash
+    c=1
+    while [ $c -le 5 ]
+    do
+    echo "Welcone $c times"
+    (( c++ ))
+    done
+    
+
+#Case script
+
+    echo
+    echo Please chose one of the options below
+    echo
+    echo 'a = Display Date and Time'
+    echo 'b = List file and directories'
+    echo 'c = List users logged in'
+    echo 'd = Check System uptime'
+    echo
+    read choices
+    case $choices in
+    a) date;;
+    b) ls;;
+    c) who;;
+    d) uptime;;
+    *) echo Invalid choice - Bye.
+    esac
+
+
+#Aliases
+    Aliases is a very popular command that is used to cut down on lengthy and repeative commands
+
+    *  alias ls="ls -al"
+    *  alias pl="pwd: ls"
+    *  alias tell="whoami; hostname; pwd"
+    *  alias dir="ls -l | grep ^d"
+    *  alias lmar="ls -l | grep mar"
+    *  alias wpa=  "chmod a+w"
+    *  alias d="df -h| awk '{print \$6}' | cut -cl-4"
+
+
+
+Creting user of global Aliases
+    * user = Applies only to a specific user profile
+    * global = applies to everyone who has account on the system
+
+        * User = /home/usr/ .bashrc
+        * global = /etc/bashrc
+//---------------------------------------------------------------------------------------//
+## Disk Management and Run Levels
+
+#System Run Level
+A run level is a preset operating state on a Unix-like operating system.
+
+    #use init
+
+    0 - System halt; no activity, the system can be safely powered down.
+    1 - Single user; rarely used.
+    2 - Multiple users, no NFS (network filesystem); also used rarely.
+    3 - Multiple users, command line (i.e., all-text mode) interface; the standard runlevel for most
+    Linux-based server hardware.
+    4 - User-definable
+    5 - Multiple users, GUI (graphical user interface); the standard runlevel for most Linux-based
+    desktop systems.
+    6 - Reboot; used when restarting the system.
+
+#Message of the day
+    cd /etc/motdmks
+
+#Disk Partition
+    *df -H
+    *fdisk
+
+#Add Disk and Create Partition
+        Partitioning a Disk
+    
+    Linux
+    # fdisk /dev/emcpowerp OR fdisk /dev/sdb
+    m -> n -> p ->1 -> enter -> enter -> w
+    Then format the new partition
+    # mkfs –t ext2 /dev/sdb1
+    OR
+    # mkfs.ext3 /dev/emcpowerL# OR mkfs.ext3 /dev/sdb1
+
+#Mount Disk Partitions:
+-> First make sure the slice has no data
+    Create directories that will be mounted on a slice
+    e.g:
+    # mkdir /rocket
+    # cd /rocket
+    # mkdir IFMX_ROCKET
+    # mkdir ROCKET_DATA
+   
+    Mount slice to the directory
+    e.g:
+    Linux
+    # mount /dev/sdb1 /rocket/ROCKET_DATA
+    # mount /dev/sdb2 /rocket/IFMX_ROCKET
+   
+    Add these entries to /etc/fstab file so the system can mount on boot up
+    # cp /etc/fstab /etc/fstab.bak
+    vi /etc/fstab and add the following lines
+    /dev/sdb1 /rocket/ROCKET_DATA ext4 defaults 1 1
+    /dev/sdb2 /rocket/IFMX_ROCKET ext4 defaults 1 1
+
+//---------------------------------------------------------------------------------------//
+#Add Disk and Create LVM partition
+
+    *fdisk /dev/sdc 
+    * n
+    * p
+    * Enter for first sector
+    * Enter for last sector
+    * p = print the partition table
+    * t = change a partition's system id
+    * L = type L to list all codes
+    * 8e = Partition type from Linux to Linux LVM
+    * w
+    * Create Physical Volume (PV) = pvcreate /dev/sdc1
+    * Verify physical volume = pvdisplay
+    * Create Volume Group (VG) = vgcreate oracle_vg /dev/sdc1
+    * Verify Volume group = vgdisplay oracle_vg
+    * Create Logical Volumes (LV) = lvcreate –n oracle_lv –size 2G oracle_vg
+    * Verify logical volumes = lvdisplay
+    * Format Logical Volumes = mkfs.xfs /dev/oracle_vg/oracle_lv
+    * Create a new directory = mkdir /oracle
+    * Mount the new file system = mount /dev/oracle_vg/oracle_lv /oracle
+    * Verify = df –h    
+
+
+#To extend filesystem of a Linux VM using LVM
+Go to your virtualization product (VMWare or Oracle Virtual Box)
+    *Increase the disk space to desired number and then click ok
+    Now go to your Linux VM
+    * Reboot the VM to have the system re-scan the newly added disk Or
+    * cd /sys/class/scsi_disk/2:0:0:0
+    * echo '1' > device/rescan
+    * fdisk –l (To make sure the disk is increased)
+    * Create a new partition
+        o fdisk /dev/sdc
+        o n (for new partition)
+        o p (for primary partition)
+        o 2 (partition number, 2 or the new partition)
+        o Enter
+        o Enter
+        o t (Label the new partition)
+        o 3 (Pick default value)
+        o 8e (This will make the filesystem as LVM)
+        o w (Write)
+        o # reboot or init 6
+        Note: The above procedure will create /dev/sdc2 partition
+
+#Extend the LVM group
+    o pvdisplay (To see which group associated with which disk)
+    o pvs (Info about physical volumes
+    o vgdisplay oracle_vg (oracle_vg is the group name or you can simply run vgdisplay)
+    On vgdisplay you will notice Free PE / Size at the bottom
+    o pvcreate /dev/sdc2 (Initialize partition for use by LVM)
+    o vgextend oracle_vg /dev/sdc2 (# = whichever partition was created above)
+    o Run vgdisplay oracle_vg
+    check (Free PE / Size). The second column is the right column as free. If it is in G convert
+    that into M. e.g. 1G = 1024M
+    o lvextend –L+1024M /dev/mapper/oracle_vg-oracle_lv
+    o resize2fs /dev/mapper/oracle_vg-oracle_lv
+    o OR
+    o xfs_growfs /dev/mapper/oracle_vg-oracle_lv
+
+
+//---------------------------------------------------------------------------------------//
+#Use a File for Additional Swap Space:
+
+    #What is swap? – CentOS.org
+    #Swap space in Linux is used when the amount of physical memory (RAM) is full. If the
+    #system needs more memory resources and the RAM is full, inactive pages in memory are
+    #moved to the swap space. While swap space can help machines with a small amount of
+    #RAM, it should not be considered a replacement for more RAM. Swap space is located on
+    #hard drives, which have a slower access time than physical memory
+
+`Recommended swap size = Twice the size of RAM
+Lets say,
+M = Amount of RAM in GB, and S = Amount of swap in GB, then
+`
+    If M < 2
+    then S = M *2
+    Else S = M + 2
+            Commands
+                dd
+                mkswap
+                swapon or swapoff
+
+
+
+#Steps to Create Swap Space from Existing Disk:
+    #If you don’t have any additional disks, you can create a file somewhere on your filesystem, and
+    #se that file for swap space.
+    #The following dd command example creates a swap file with the name “newswap” under /
+    #irectory with a size of 1024MB (1.0GB).
+    # dd if=/dev/zero of=/newswap bs=1M count=1024
+
+    Where
+    if = read from FILE instead of stdin
+    of = write to FILE instead of stdout
+    bs = read and write BYTES at a time
+    count = total size of the file
+    Change the permission of the swap file so that only root can access it.
+                    
+                # chmod go-r /newswap OR
+                # chmod 0600 /newswap
+                Make this file as a swap file using mkswap command.
+                # mkswap /newswap
+                Enable the newly created newswap.
+                # swapon /newswap
+                To make this swap file available as a swap area even after the reboot, add the following line to
+                the /etc/fstab file.
+                # cat /etc/fstab
+                /newswap swap swap defaults 0 0
+                Verify whether the newly created swap area is available for your use.
+                # swapon –s
+                # free –h
+                If you don’t want to reboot to verify whether the system takes all the swap space mentioned in
+                the /etc/fstab, you can do the following, which will disable and enable all the swap partition
+                mentioned in the /etc/fstab
+                # swapoff -a
+                # swapon -a
+
+
+
+#Step by steps installation instructions
+First please make sure to take a snapshot of your VM
+• Install samba packages
+    # Become root user
+    # yum install samba samba-client samba-common
+• Enable samba to be allowed through firewall (Only if you have firewall running)
+    # firewall-cmd --permanent --zone=public --add-service=samba
+    # firewall-cmd –reload
+• To stop and disable firewall or iptables
+    # systemctl stop firewalld
+    # systemctl stop iptables
+    # systemctl disable firewalld
+    # systemctl disable iptables
+• Create Samba share directory and assign permissions
+    # mkdir -p /samba/morepretzels
+    # chmod a+rwx /samba/morepretzels
+    # chown -R nobody:nobody /samba
+• Also, you need to change the SELinux security context for the samba shared
+directory as follows: (Only if you have SELinux enabled)
+    # chcon -t samba_share_t /samba/morepretzels
+• If you want to disable SELinux, follow these instructions
+    # sestatus To check the SELinux status)
+    # vi /etc/selinux/config
+Change
+SELINUX=enforcing
+To
+SELINUX=disabled
+    # reboot
+• Modify /etc/samba/smb.conf file to add new shared filesystem (Make sure to
+create a copy of smb.conf file)
+Delete everything from smb.conf file and add the following parameters
+[global]
+ workgroup = WORKGROUP
+netbios name = centos
+security = user
+map to guest = bad user
+dns proxy = no
+[Anonymous]
+path = /samba/morepretzels
+browsable = yes
+writable = yes
+guest ok = yes
+guest only = yes
+read only = no
+• Verify the setting
+    # testparm
+• Once the packages are installed, enable and start Samba services
+    # systemctl enable smb
+    # systemctl enable nmb
+    # systemctl start smb
+    # systemctl start nmb
+• Mount on Windows client
+    o Go to start
+    o Go to search bar
+    o Type \\192.168.1.95 (This is my server IP, you can check your Linux
+CentOS IP by running the command ifconfig)
+• Mount on Linux client
+Become root
+    # yum -y install cifs-utils samba-client
+Create a mount point directory
+    # mkdir /mnt/sambashare
+Mount the samba share
+    # mount -t cifs //192.168.1.95/Anonymous /mnt/sambashare/
+    # Entry without password
+Secure Samba Server
+    • Create a group smbgrp & user larry to access the samba server with proper
+authentication
+    # useradd larry
+    # groupadd smbgrp
+    # usermod -a -G smbgrp larry
+    # smbpasswd -a larry
+New SMB password: YOUR SAMBA PASS
+Retype new SMB password: REPEAT YOUR SAMBA PASS
+Added user larry
+• Create a new share, set the permission on the share:
+    # mkdir /samba/securepretzels
+    # chown -R larry:smbgrp /samba/securepretzels
+    # chmod -R 0770 /samba/securepretzels
+    # chcon -t samba_share_t /samba/securepretzels
+• Edit the configuration file /etc/samba/smb.conf (Create a backup copy first)
+    # vi /etc/samba/smb.conf
+    Add the following lines
+    [Secure]
+    path = /samba/securepretzels
+    valid users = @smbgrp
+    guest ok = no
+    writable = yes
+    browsable = yes
+• Restart the services
+    # systemctl restart smb
+    # systemctl restart nmb
+
+//---------------------------------------------------------------------------------------//
+##File System Check
+    *fsck
+    *xfs_repair
+
+    *linux fsck utility is used to check and repair linux filesystem(ext2, ext3, ext4, etc)
+
+    *linux xfs_repair utility is use to check and repair filesystem for xfs filesystem type
+
+    *depending on when was the last time a  file systems was checked. the file system runs the fsck during boot time to check whether the file 
+        system is in consistant state
+
+    *system adminitrator could also run it manully when there is a problem with the file system
+    *Make sure to execute the fsck on an unmounted file system to avoid any data  corruption issue
+
+    * Force a filesystem check even if it clean using option -f
+
+    * attemp to fix detected problem automatically using option -Y
+//---------------------------------------------------------------------------------------//
+##Network File System
+The Network File System (NFS) is a mechanism for storing files on a network
+#Steps for NFS Server Configuration
+• Install NFS packages
+    # yum install nfs-utils libnfsidmap (most likely they are installed)
+• Once the packages are installed, enable and start NFS services
+    # systemctl enable rpcbind
+    # systemctl enable nfs-server
+    # systemctl start rpcbind, nfs-server, rpc-statd, nfs-idmapd
+• Create NFS share directory and assign permissions
+    # mkdir /mypretzels
+    # chmod a+rwx /mypretzels
+• Modify /etc/exports file to add new shared filesystem
+    # /mypretzels 192.168.12.7(rw,sync,no_root_squash) = for only 1 host
+    # /mypretzels *(rw,sync,no_root_squash) = for everyone
+• Export the NFS filesystem
+    # exportfs -rv
+• Stop and disable firewalld
+    # systemctl stop firewalld
+    # systemctl disable firewalld
+Steps for NFS Client Configuration
+• Install NFS packages
+    # yum install nfs-utils rpcbind
+• Once the packages are installed enable and start rpcbind service
+    # systemctl rpcbind start
+• Make sure firewalld or iptables stopped (if running)
+    # ps –ef | egrep “firewall|iptable”
+• Show mount from the NFS server
+    # showmount -e 192.168.1.5 (NFS Server IP)
+• Create a mount point
+    # mkdir /mnt/kramer
+• Mount the NFS filesystem
+    # mount 192.168.1.5:/mypretzels /mnt/kramer
+• Verify mounted filesystem
+    # df –h
+• To unmount
+    # umount /mnt/kramer
+
+//---------------------------------------------------------------------------------------//
+#Networking And Component
+
+    *IP
+    *subnet mask
+    *Gateway
+    *Static vs DHCP
+
+#Network Files and Commands
+ 
+    *interface Detection
+    *Assigning an IP address
+    *interface configuration files
+        
+        * /etc/nsswitch.conf
+        * /etc/hostname
+        * /etc/sysconfig/network
+        * /etc/sysconfig/network-script/ifcfg-nic 
+        * /etc/resolve.conf
+
+//---------------------------------------------------------------------------------------//
+ 
+# Network Commands
+    *ping
+    *ifconfig
+    *ifup or ipdown
+    *netstat
+    *tcpdump
+
+#NIC - Network interface Card
+        $A network interface card (NIC or network adapter) is an important hardware component used to 
+        $provide network connections for devices like computers, servers, etc. interface name = ethtool
+for eg 
+    -ethtool lo
+    -ethtool eno1
+    -ethtool docker0
+    -ethtool wlp2s0
+
+#NIC Bonding 
+    Creating NIC Bonding:
+         Add a new NIC if it does not exist
+         Install bonding driver = modprobe bonding
+         To list the bonding module info = modinfo bonding
+
+
+//---------------------------------------------------------------------------------------//
+#Create Bond Interface File
+ vi /etc/sysconfig/network-scripts/ifcfg-bond0
+ Add the following parameters
+    DEVICE=bond0
+    TYPE=Bond
+    NAME=bond0
+    BONDING_MASTER=yes
+    BOOTPROTO=none
+    ONBOOT=yes
+    IPADDR=192.168.1.80
+    NETMASK=255.255.255.0
+    GATEWAY=192.168.1.1
+    BONDING_OPTS=”mode=5 miimon=100”
+
+ Save and exit the file
+ The bonding options details are can be found on the following table
+
+
+//---------------------------------------------------------------------------------------//
+#miimon
+Specifies the MII link monitoring frequency in milliseconds. This determines how often the link state of
+each slave is inspected for link failures
+Edit the First NIC File (enp0s3)
+     vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+     Delete the entire content
+     Add the following parameters
+        TYPE=Ethernet
+        BOOTPROTO=none
+        DEVICE=enp0s3
+        ONBOOT=yes
+        HWADDR=”MAC from the ifconfig command”
+        MASTER=bond0
+        SLAVE=yes
+ Save and exit the file
+
+
+//---------------------------------------------------------------------------------------//
+#Create the Second NIC File (enp0s8) or Copy enp0s3
+ vi /etc/sysconfig/network-scripts/ifcfg-enp0s8
+ Add the following parameters
+        TYPE=Ethernet
+        BOOTPROTO=none
+        DEVICE=enp0s8
+        ONBOOT=yes
+        HWADDR=”MAC from the ifconfig command”
+        MASTER=bond0
+        SLAVE=yes
+ Save and exit the file
+
+Restart the Network Service
+     systemctl restart network
+Test and verify the configuration
+     ifconfig or ifconfig | more
+Use following command to view bond interface settings like bonding mode & slave interface
+     cat /proc/net/bonding/bond0
+
+
+//---------------------------------------------------------------------------------------//
+#New Network utility
+
+    * Getting Start with Network Manager
+    * Network Configuration methods
+            * nmtui
+            * nmcli
+                    - nmcli device wifi list
+                    - nmcli device wifi show-password
+                    - nmcli con show
+                    - nmcli device  // get the list of network interfaces
+                    - nmcli connections modify enp0s3 1pv4.addresses
+                    - nmcli connections modify enp0s3 1pv4.gateway
+                    - nmcli connections modify enp0s3 1pv4.method
+                    - nmcli connections modify enp0s3 1pv4.dns
+                    - nmcli connections down enp0s3 && nmcli
+                        connections up enp0s3
+                    - ip address show enp0s3
+            * nm-connections-editor
+            * GNOME settings
+
+#Downloading files and get 
+    * wget = linux // world  
+    * wget https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+#curl and ping command
+    * curl is specially for url 
+
+    curl -O https://the.earth.li/~sgtatham/putty/latest/putty-0.79.tar.gz
+    linux = curl
+    linux = ping
+
+    ping www.putty.org
+
+//---------------------------------------------------------------------------------------//
+#Ftp - file transfer protocol
+• Install and Configure FTP on the remote server
+    • # Become root
+    • # rpm –qa | grep ftp
+    • # ping www.google.com
+    • # yum install vsftpd
+    • # vi /etc/vsftpd/vsftpd.conf (make a copy first)
+• Find the following lines and make the changes as shown below:
+    • ## Disable anonymous login ##
+• anonymous_enable=NO
+    • ## Uncomment ##
+• ascii_upload_enable=YES
+• ascii_download_enable=YES
+    • ## Uncomment - Enter your Welcome message - This is optional ##
+• ftpd_banner=Welcome to UNIXMEN FTP service.
+    • ## Add at the end of this file ##
+• use_localtime=YES
+    • # systemctl start vsftpd
+    • # systemctl enable vsftpd
+    • # systemctl stop firewalld
+    • # systemctl disable firewalld
+    • # useradd iafzal (if the user does not exist)
+
+ Install FTP client on the client server
+    • # Become root
+    • # yum install ftp
+    • # su – iafzal
+    • $ touch kruger
+• Commands to transfer file to the FTP server:
+• ftp 192.168.1.x
+• Enter username and password
+• bi
+• hash
+• put kruger
+• bye.
+
+
+//---------------------------------------------------------------------------------------//
+#SCP - Secure Copy Protocol
+The Secure Copy Protocol or “SCP” helps to transfer computer
+files securely from a local to a remote host. It is somewhat similar
+to the File Transfer Protocol “FTP”, but it adds security and
+authentication
+SCP examples:
+• Copy file from a remote host to local host SCP example:
+    $ scp username@from_host:file.txt /local/directory/
+• Copy file from local host to a remote host SCP example:
+    $ scp file.txt username@to_host:/remote/directory/
+• Copy directory from a remote host to local host SCP example:
+    $ scp -r username@from_host:/remote/directory/ /local/directory/
+• Copy directory from local host to a remote hos SCP example:
+    $ scp -r /local/directory/ username@to_host:/remote/directory/
+• Copy file from remote host to remote host SCP example:
+    $ scp username@from_host:/remote/directory/file.txt
+        username@to_host:/remote/directory
+
+//---------------------------------------------------------------------------------------//
+##rsync- Remote Synchronization 
+rsync is a utility for efficiently transferring and synchronizing
+files within the same computer or to a remote comp
+• Basic syntax of rsync command
+    • # rsync options source destination
+• Install rsync in your Linux machine (check if it already exists)
+    • # yum install rsync (On CentOS/Redhat based systems)
+    • # apt-get install rsync (On Ubuntu/Debian based systems)
+• rsync a file on a local machine
+    • $ tar cvf backup.tar . (tar the entire home directory (/home/iafzal)
+    • $ mkdir /tmp/backups
+    • $ rsync -zvh backup.tar /tmp/backups/
+• rsync a directory on a local machine
+    • $ rsync -azvh /home/iafzal /tmp/backups/
+• rsync a file to a remote machine
+    • $ mkdir /tmp/backups (create /tmp/backups dir on remote server)
+    • $ rsync -avz backup.tar iafzal@192.168.1.x:/tmp/backups
+• rsync a file from a remote machine
+    • $ touch serverfile
+    • $ rsync -avzh iafzal@192.168.1.x:/home/iafzal/serverfile /tmp/backups
+
+//---------------------------------------------------------------------------------------//
+##SSH & TELNET
+Telnet = Un-secured connection between computers
+• SSH = Secured
+
+• Two type of packages for most of the services
+    • Client package
+    • Server package
+
+
+•SSH is a secure way to login from host A to host B
+• Repetitive tasks require login without a password
+
+What we will learn…
+    • How to generate SSH keys on the server
+    • Add SSH keys to the client
+    • Verify by logging through SSH.
+
+//---------------------------------------------------------------------------------------//
+##DNS
+• Purpose?
+    Hostname to IP (A Record)
+    IP to Hostname (PTR Record)
+    Hostname to Hostname (CNAME Record)
+• Files
+    /etc/named.conf
+    /var/named
+• Service
+    systemctl restart named
+
+
+• Create a snapshot of your virtual machine
+• Setup:
+    • Master DNS
+    • Secondary or Slave DNS
+    • Client
+• Domain Name = lab.local
+• IP address = My local IP address on enp0s3
+
+• Install DNS package
+    • yum install bind bind-utils –y
+• Configure DNS (Summary)
+    • Modify /etc/named.conf
+    • Create two zone files (forward.lab and reverse.lab)
+    • Modify DNS file permissions and start the service
+• Revert back to snapshots
+
+##Hostname/IP Lookup
+• Commands used for DNS lookup
+    • nslookup
+    • dig
+//---------------------------------------------------------------------------------------//
+##NTP - Network time Protocol
+    • Purpose?
+        Time synchronization
+    • File
+        /etc/ntp.conf
+    • Service
+        systemctl restart ntpd
+    • Command
+        ntpq
+
+//---------------------------------------------------------------------------------------//
+##chronyd - new version of NTP
+• Purpose? = Time synchronization
+• Package name = chronyd
+• Configuration file = /etc/chronyd.conf
+• Log file = /var/log/chrony
+• Service = systemctl start/restart chronyd
+• Program command = chronyd.
+
+//---------------------------------------------------------------------------------------//
+##Sendmail
+• Purpose?
+    Send and receive emails
+• Files
+    /etc/mail/sendmail.mc
+    /etc/mail/sendmail.cf
+    /etc/mail
+• Service
+    systemctl restart sendmail
+• Command
+    mail –s “subject line” email@mydomain.com
+//---------------------------------------------------------------------------------------//
+##Web Server (httpd)
+• Purpose = Serve webpages
+• Service or Package name = httpd
+• Files = /etc/httpd/conf/httpd.conf
+        = /var/www/html/index.html
+• Service
+            systemctl restart httpd
+            systemctl enable httpd
+• Log Files = /var/log/httpd/
+
+//---------------------------------------------------------------------------------------//
+##Central Logger (rsyslog)
+• Purpose = Generate logs or collect logs from other servers
+• Service or package name = rsyslog
+• Configuration file= /etc/syslog.conf
+• Service
+        systemctl restart rsyslog
+        systemctl enable rsyslog
+
+//---------------------------------------------------------------------------------------//
+##Linux OS Hardening
+
+    • User Account
+    • Remove un-wanted packages
+    • Stop un-used Services
+    • Check on Listening Ports
+    • Secure SSH Configuration
+    • Enable Firewall (iptables/firewalld)
+    • Enable SELinux
+    • Change Listening Services Port Numbers
+    • Keep your OS up to date (security patching)
+//---------------------------------------------------------------------------------------//
+##OPENLDAP
+•What is OpenLDAP?
+• OpenLDAP Service
+    • slapd
+• Start or stop the service
+    • systemctl start slapd
+    • systemctl enable slapd
+•Configuration Files
+    • /etc/openldap/slapd.d
+
+//---------------------------------------------------------------------------------------//
+##Trace Network Traffic (traceroute)
+
+• The traceroute command is used in Linux to map the journey that a packet of
+information undertakes from its source to its destination. One use for traceroute
+is to locate when data loss occurs throughout a network, which could signify a
+node that's down.
+
+• Because each hop in the record reflects a new server or router between the
+originating PC and the intended target, reviewing the results of a traceroute scan
+also lets you identify slow points that may adversely affect your network traffic.
+• Example
+    # traceroute www.google.com
+
+//---------------------------------------------------------------------------------------//
+##How to open Image File
+For CentOS/RHEL version 8:
+
+Package Name = GraphicsMagick
+
+
+Command:
+#dnf install GraphicsMagick
+
+//---------------------------------------------------------------------------------------//
+## Configure and Secure SSH
+##Access Remote Server without Password (SSH-Keys)
+
+• Two reasons to access a remote machine
+    • Repetitive logins
+    • Automation through scripts
+• Keys are generated at user level
+    • iafzal
+    • root
+
+
+Client = MyFirstLinuxVM
+Step 1 — Generate the Key
+    # ssh-keygen
+
+Step 2 — Copy the Key to the server
+    # ssh-copy-id root@192.168.1.x
+Step 3 — Login from client to server
+    # ssh root@192.168.1.x
+    # ssh –l root 192.168.1.x
+
+//---------------------------------------------------------------------------------------//
+## Tuned System Performance
+
+•To Change to desired profile
+        •tuned-adm profile profile-name
+
+•Check for tuned Recommendation
+        •tuned-adm Recommended
+
+•Turn of f tuned setting daemon
+        •tuned-adm off
+
+•chnage profile through web console
+        •Login to https://192.168.1.x:9090
+        •overview -> configuration -> Performance profile
+
+
+//---------------------------------------------------------------------------------------//
+## Kickstart (Automate Linux installation)
+
+//---------------------------------------------------------------------------------------//
+DHCP
