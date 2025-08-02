@@ -1,5 +1,4 @@
-                                                                                            Lab -1 Hijack Session
-
+                                                                                    
 Concept
 Application developers who develop their own session IDs frequently forget to incorporate the complexity and randomness necessary for security. If the user specific session ID is not complex and random, then the application is highly susceptible to session-based brute force attacks.
 
