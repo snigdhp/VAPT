@@ -71,11 +71,24 @@ The application we are working with seems to follow a RESTful pattern so far as 
 ![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-4.png>) 
 
 - So we use same profile details to get and manipulate the user details 
-
-**WebGoat/IDOR/profile/2342384**
 ![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-5.png>)
 
 ---------------------------------------------------------------------------------------------
+
+Playing with the Patterns
+View Another Profile
+View someone else’s profile by using the alternate path you already used to view your own profile. Use the 'View Profile' button and intercept/modify the request to view another profile. Alternatively, you may also just be able to use a manual GET request with your browser.
+
+- Here we have to click on view profile button and intercept this request and send to intruder 
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-6.png>)
+
+- After getting the request and we have to provide payload position on userid and start brute force attack to using attack type as Number and change the numbers 
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-7.png>)
+
+- Hence we got the profile and we are able to access different profile 
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-8.png>)
+
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-9.png>)
 
 
 
