@@ -47,15 +47,19 @@ You may need to use another browser/account along the way.
 Start with the information you already gathered (hidden menu items) to see if you can pull the list of users and then provide the 'hash' for Jerry’s account.
 
 - Here in this Lab we need to get the hash id of jeery account
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-1.png>)
 
 - So by Intercepting the Request by click on submit button and this Post Request to Repeater 
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-2.png>)
 
-- Here we are on Repeater Request and by clicking on Send button we checking the Server Response 
+- Here we are on Repeater Request and by clicking on Send button we checking the Server Response
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-3.png>)
 
 - Now we are POST Header Method as we know we know we found hidden items as users so change the value of **user-hash** to **users** , **POST** Method into **GET** Changing the content **x-www-form-urlencoded** type as **application/json** , Here found the Jerry User-hash id 
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-4.png>)
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-5.png>)
 
