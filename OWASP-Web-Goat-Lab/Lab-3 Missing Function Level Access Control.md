@@ -64,6 +64,7 @@ The company fixed the problem, right?
 The company found out the endpoint was a bit too open, they made an emergency fixed and not only admin users can list all users.
 
 Start with the information you already gathered (hidden menu items) to see if you can pull the list of users and then provide the 'hash' for Jerry’s account.
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-6.png>)
 
 - Here is we need to intercept the request to get the jerry hash account 
