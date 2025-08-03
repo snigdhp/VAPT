@@ -60,3 +60,15 @@ Start with the information you already gathered (hidden menu items) to see if yo
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-5.png>)
 
 ---------------------------------------------------------------------------------------------
+The company fixed the problem, right?
+The company found out the endpoint was a bit too open, they made an emergency fixed and not only admin users can list all users.
+
+Start with the information you already gathered (hidden menu items) to see if you can pull the list of users and then provide the 'hash' for Jerry’s account.
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-6.png>)
+
+- Here is we need to intercept the request to get the jerry hash account 
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-7.png>)
+
+- Now we need to manipulate the Request body to get the Jerry user-Hash id 
+- Here on the Request i manipulate the request **POST** into **GET** and header change as **user-hash-fix** to **users** , application type into **application/json** and Your payload should resemble something like this of admin user account access
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-8.png>)
