@@ -87,7 +87,6 @@ View someone else’s profile by using the alternate path you already used to vi
 
 - Hence we got the profile and we are able to access different profile 
 ![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-8.png>)
-
 ![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-9.png>)
 
 
