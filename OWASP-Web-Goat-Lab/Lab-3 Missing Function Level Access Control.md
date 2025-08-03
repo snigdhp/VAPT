@@ -55,7 +55,7 @@ Start with the information you already gathered (hidden menu items) to see if yo
 - Here we are on Repeater Request and by clicking on Send button we checking the Server Response 
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-3.png>)
 
-- Now we are POST Header Method as we know we know we found hidden items as users so change the value of **user-hash** to **users** , **POST** Method into **GET** Changing the content type as **application/json** , Here found the Jerry User-hash id 
+- Now we are POST Header Method as we know we know we found hidden items as users so change the value of **user-hash** to **users** , **POST** Method into **GET** Changing the content **x-www-form-urlencoded** type as **application/json** , Here found the Jerry User-hash id 
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-4.png>)
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-5.png>)
 
