@@ -1,3 +1,4 @@
+**Insecure Direct Object References**
 Direct Object References
 Direct Object References are when an application uses client-provided input to access data & objects.
 
@@ -56,6 +57,25 @@ A consistent principle from the offensive side of AppSec is to view differences 
 
 - Once the incercept the request send the request body to repeater and click on send button and check the response 
 ![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-2.png>)
+
+- We found that in the server response UserId,role is missing, and then click on submit difference button to check answer 
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-3.png>) 
+
+---------------------------------------------------------------------------------------------
+
+Guessing & Predicting Patterns
+View Your Own Profile Another Way
+The application we are working with seems to follow a RESTful pattern so far as the profile goes. Many apps have roles in which an elevated user may access content of another. In that case, just /profile won’t work since the own user’s session/authentication data won’t tell us whose profile they want view. So, what do you think is a likely pattern to view your own profile explicitly using a direct object reference?
+
+- Now we have to have to guess and find the profile to get the profile data as we know in the previous lab we intercept the request we got something in server response profile details 
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-4.png>) 
+
+- So we use same profile details to get and manipulate the user details 
+
+**WebGoat/IDOR/profile/2342384**
+![alt text](<../image/Lab-2 Insecure Direct Object References.md/image-5.png>)
+
+---------------------------------------------------------------------------------------------
 
 
 
