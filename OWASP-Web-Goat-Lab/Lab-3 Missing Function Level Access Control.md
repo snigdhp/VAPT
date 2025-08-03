@@ -30,3 +30,32 @@ Find two invisible menu items in the menu below that are or would be of interest
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/Screenshot 2025-08-04 011702.png>)
 
 ---------------------------------------------------------------------------------------------
+Try it
+As the previous page described, sometimes applications rely on client-side controls to control access (obscurity). If you can find invisible items, try them and see what happens. Yes, it can be that simple!
+
+Gathering User Info
+Often data dumps originate from vulnerabilities such as SQL injection, but they can also come from poor or lacking access control.
+
+It will likely take multiple steps and multiple attempts to get this one:
+
+Pay attention to the comments and leaked info.
+
+You’ll need to do some guessing too.
+
+You may need to use another browser/account along the way.
+
+Start with the information you already gathered (hidden menu items) to see if you can pull the list of users and then provide the 'hash' for Jerry’s account.
+
+- Here in this Lab we need to get the hash id of jeery account
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-1.png>)
+
+- So by Intercepting the Request by click on submit button and this Post Request to Repeater 
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-2.png>)
+
+- Here we are on Repeater Request and by clicking on Send button we checking the Server Response 
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-3.png>)
+
+- Now we are POST Header Method as we know we know we found hidden items as users so change the value of **user-hash** to **users** , **POST** Method into **GET** Changing the content type as **application/json** , Here found the Jerry User-hash id 
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-4.png>)
+
+![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-5.png>)
