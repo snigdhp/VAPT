@@ -5,7 +5,7 @@ Application developers who develop their own session IDs frequently forget to in
 
 **Goals**
 Gain access to an authenticated session belonging to someone else.0
-**
+
 in this lesson we are trying to predict the 'hijack cookie' value. The 'hijack cookie' is used to differentiate authenticated and anonymous users of WebGoat.
 
 - Log in to the OWASP Goat Web application and select Lab-1: Hijack Session.
