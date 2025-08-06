@@ -80,4 +80,5 @@ Start with the information you already gathered (hidden menu items) to see if yo
 - Now we need to manipulate the Request body to get the Jerry user-Hash id 
 - Here on the Request i manipulate the request **POST** into **GET** and header change as **user-hash-fix** to **users** , application type into **application/json** and Your payload should resemble something like this of admin user account access
 
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image-8.png>)
