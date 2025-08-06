@@ -24,9 +24,11 @@ Your mission
 Find two invisible menu items in the menu below that are or would be of interest to an attacker/malicious user and submit the labels for those menu items (there are no links right now in the menus).
 
 - Here we need to find hidden items in the HTML code by click on inspect menu 
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/image.png>)
 
 - And we found that hidden items are Users and Config Respectively
+
 ![alt text](<../image/Lab-3 Missing Function Level Access Control.md/Screenshot 2025-08-04 011702.png>)
 
 ---------------------------------------------------------------------------------------------
