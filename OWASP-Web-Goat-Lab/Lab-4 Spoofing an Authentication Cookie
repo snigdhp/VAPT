@@ -1,0 +1,16 @@
+When a valid authentication cookie is received, the system will automatically log in the user.
+
+If a cookie is not sent, but the provided credentials are correct, the system will generate an authentication cookie.
+
+Login attempts will be denied under any other circumstances.
+
+**Please pay close attention to the feedback messages you receive during the attacks.**
+
+Known credentials:
+
+user name                                   password
+webgoat                                     webgoat
+admin                                       admin
+
+Goal
+Once you have a clear understanding of how the authentication cookie is generated, attempt to spoof the cookie and log in as Tom.
