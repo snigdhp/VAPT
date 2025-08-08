@@ -14,6 +14,7 @@ admin                                       admin
 
 Goal
 - Once you have a clear understanding of how the authentication cookie is generated, attempt to spoof the cookie and log in as Tom.
+![alt text](<../image/Lab-4 Spoofing an Authentication Cookie.md/image-1.png>)
 
 
 
