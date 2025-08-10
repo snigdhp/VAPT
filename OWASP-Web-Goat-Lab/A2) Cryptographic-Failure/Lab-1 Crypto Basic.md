@@ -89,6 +89,7 @@ Now let’s see if you are able to find out the original password from this defa
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-5.png>) 
 
 -------------------------------------------------------------------------
+**Part-3**
 
 **Plain Hashing**
 Hashing is a type of cryptography which is mostly used to detect if the original data has been changed. A hash is generated from the original data. It is based on irreversible cryptographic techniques. If the original data is changed by even one byte, the resulting hash is also different.
@@ -114,3 +115,6 @@ Now let’s see if you can find what passwords matches which plain (unsalted) ha
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-10.png>)
 
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-11.png>)
+
+-------------------------------------------------------------------------
+**Part-4**
