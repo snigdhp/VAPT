@@ -4,19 +4,19 @@ This lesson explains different types of cryptography techniques that are commonl
 **Goals**
 The goal is to get familiar with the following forms of techniques:
 
-**Encoding**
+1- **Encoding**
 
-**Hashing**
+2- **Hashing**
 
-**Encryption**
+3- **Encryption**
 
-**Signing**
+4- **Signing**
 
-**Keystores**
+5- **Keystores**
 
-**Security defaults**
+6- **Security defaults**
 
-**Post quantum crypto**
+7- **Post quantum crypto**
 
 **Assignments**
 After the explanation of an item there will be several assignments.
@@ -49,3 +49,5 @@ Basic authentication is sometimes used by web applications. This uses base64 enc
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-1.png>)
 
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-2.png>)
+
+---------------------------------------------------------------------------------------------
