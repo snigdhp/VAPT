@@ -118,3 +118,104 @@ Now let’s see if you can find what passwords matches which plain (unsalted) ha
 
 -------------------------------------------------------------------------
 **Part-4**
+
+**Symmetric encryption**
+Symmetric encryption is based on a shared secret that is used for both encryption as well as decryption. Therefore, both parties (that are involved in exchanging secrets) share the same key.
+
+**Example protocols are:**
+
+**AES**
+
+**3DES**
+
+**Asymmetric encryption**
+Asymmetric encryption is based on mathematical principles that consist of a key pair. The two keys are usually called a private key and a public key. The private key needs to be protected very well and is only known to one party. All others can freely use the public key. Something encrypted with the private key can be decrypted by all that have the public key, and something encrypted with the public key can only be decrypted with the private key.
+
+**Example protocols are:**
+
+**RSA**
+
+**DSA**
+
+**HTTPS uses both symmetric and asymmetric keys**
+Here is a short description of what happens if you open your browser and go to an https site.
+
+Your browser connects to the server and gets the webserver certificate
+
+Your browser checks if it trusts the certificate issuer by checking if the issuer certificate is in its trust store. This trust store is managed by operating system and browser updates. And on some corporate networks it is managed by the company. From the certificate the browser obtains the public key.
+
+The browser now generates random bytes to be used to generate a symmetric key and encrypts this with the public key of the server. So only the server can decrypt it.
+
+At the end of this process both the browser and the webserver will use the exchanged symmetric key (in the asymmetric key exchange process) to encrypt and decrypt messages that are sent back and forth between the browser and the webserver.
+
+Symmetric keys are used because it can be used more easily with large sets of data and requires less processing power in doing so. However, the information on these pages is just for a basic understanding of cryptography. Look on the internet for more detailed information about these topics.
+
+
+A signature is a hash that can be used to check the validity of some data. The signature can be supplied separately from the data that it validates, or in the case of CMS or SOAP can be included in the same file. (Where parts of that file contain the data and parts contain the signature).
+
+Signing is used when integrity is important. It is meant to be a guarantee that data sent from Party-A to Party-B was not altered. So Party-A signs the data by calculating the hash of the data and encrypting that hash using an asymmetric private key. Party-B can then verify the data by calculating the hash of the data and decrypting the signature to compare if both hashes are the same.
+
+**RAW signatures**
+
+A raw signature is usually calculated by Party-A as follows:
+
+create a hash of the data (e.g. SHA-256 hash)
+
+encrypt the hash using an asymmetric private key (e.g. RSA 2048 bit key)
+
+(optionally) encode the binary encrypted hash using base64 encoding
+
+Party-B will have to get the certificate with the public key as well. This might have been exchanged before. So at least 3 files are involved: the data, the signature and the certificate.
+
+**CMS signatures**
+
+A CMS signature is a standardized way to send data + signature + certificate with the public key all in one file from Party-A to Party-B. As long as the certificate is valid and not revoked, Party-B can use the supplied public key to verify the signature.
+
+**SOAP signatures**
+
+A SOAP signature also contains data and the signature and optionally the certificate. All in one XML payload. There are special steps involved in calculating the hash of the data. This has to do with the fact that the SOAP XML sent from system to system might introduce extra elements or timestamps. Also, SOAP Signing offers the possibility to sign different parts of the message by different parties.
+
+**Email signatures**
+
+Sending emails is not very difficult. You have to fill in some data and send it to a server that forwards it, and eventually it will end up at its destination. However, it is possible to send emails with a FROM field that is not your own email address. In order to guarantee to your receiver that you really sent this email, you can sign your email. A trusted third party will check your identity and issue an email signing certificate. You install the private key in your email application and configure it to sign emails that you send out. The certificate is issued on a specific email address and all others that receive this email will see an indication that the sender is verified, because their tools will verify the signature using the public certificate that was issued by the trusted third party.
+
+**PDF or Word or other signatures**
+
+Adobe PDF documents and Microsoft Word documents are also examples of things that support signing. The signature is also inside the same document as the data so there is some description on what is part of the data and what is part of the metadata. Governments usually send official documents with a PDF that contains a certificate.
+
+**Assignment**
+Here is a simple assignment. A private RSA key is sent to you. Determine the modulus of the RSA key as a hex string, and calculate a signature for that hex string using the key. The exercise requires some experience with OpenSSL. You can search on the Internet for useful commands and/or use the HINTS button to get some tips.
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-12.png>)
+
+- We will use WebGoat docker container terminal to run the commands. 
+
+- As stated in WebGoat exercise, we have the private key value. 
+
+- In base on the information provided we can create the following echo commands
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-13.png>)
+
+- To get the modulus we will need to run the following openssl command: 
+
+**openssl rsa -text -noout -in private.key**
+
+- Now convert the private key into public key
+
+ **openssl rsa -in public.pub -pubin -modulus -noout**
+
+**echo -n "9E84C4997FDF2CCB2BB76C5DECB596EABBF7A79CAA5242DC579F1C0F00503DDF4CC74CB3286E68293B67E5106FEA92BE14CA37A4B7906FFEF9816E915EBC994CB44E871C432A9BE5939FF1B18F38ABA70873FBEEAAD98C81C6690305699E615C3B871E3060EB58FE216032E56E82845FE4839C9BB90609A01F427C918708B85D2167196E4699AD6B1F73617762D81C177A7FCE81658C84720FC6DCF6E60925A8C71D168644E882EB1289C0452C5C0BE3CC527DC21618217976B519BD0A8662FC6AD2997F1D0B6B7E63C4939850079C214AAC5AECF3C8FB6E2C1AF16EA19D15DC1D1A3029E8B99A4C7E1E193CE7516B1084ACF31C446381917E79EE1283199141" | openssl dgst -sign private.key -sha256 -out sign.sha265**
+
+**openssl enc -base64 -in sign.sha265 -out sign.sha265.sha256**
+
+**cat sign.sha256.sha256**
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-14.png>)
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-15.png>)
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-16.png>)
+
+-------------------------------------------------------------------------
+**Part-5**
+
