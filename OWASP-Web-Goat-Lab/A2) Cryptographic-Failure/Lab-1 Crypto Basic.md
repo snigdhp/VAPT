@@ -219,3 +219,41 @@ Here is a simple assignment. A private RSA key is sent to you. Determine the mod
 -------------------------------------------------------------------------
 **Part-5**
 
+A keystore is a place where you store keys. Besides keystore the term truststore is also used frequently. A truststore is the same thing as a keystore. Only it usually contains only the certificates (so basically only public keys and issuer information) of trusted certificates or certificate authorities.
+
+**File based keystores**
+A file based keystore is something that in the end has the keys on a file system. Storing public certificates in a file based keystore is very common
+
+**Database keystores**
+Keys and especially public certificates can of course also be stored in a database.
+
+**Hardware keystore**
+A hardware keystore is a system that has some sort of hardware which contain the actual keys. This is typically done in high end security environments where the private key is really private. In comparison with file based or database keystores, it is impossible to make a copy of the keystore to send it to some unknown and untrusted environment.
+
+**Certificate authorities that are used to provide you with a server** certificate for your website, also create the private keys for you (as-a-service). However, it is by definition no longer considered a private key. For all keystore types, you should keep the private key private and use a certificate signing request to order your signing or server certificates.
+
+**Managed keystores in operating system, browser and other applications**
+When you visit a website and your browser says that the certificates are fine, it means that the certificate used for the website is issued by a trusted certificate authority. But this list of trusted certificate authorities is managed. Some CA’s might be revoked or removed. These updates happen in the background when browser updates are installed. Not only the browser maintains a list of trusted certificate authorities, the operation system does so as well. And the Java runtime also has its own list which is kept in the cacerts file. Updates of the OS and Java JRE keep this list up to date. In corporate environments, these are usually maintained by the company and also contain company root certificates.
+
+**Extra check for website certificates using DNS CAA records**
+Some companies inspect all or most internet traffic. Even the ones were you think you have an end-2-end secured connection. This works as follows. An employee opens a browser and googles some information. The browser will use https and go to the site of google. The link looks real and the lock is shown in the browser. However, if you would inspect the certificate, you might notice that it has been issued by one of your companies root CA’s! So you have established an end-2-end secure connection with a server of your company, and that server has the secure connection with google. In order to prevent such man in the middle connections to your server, modern browsers now will also check the DNS CAA records to see whether or not a certain issuer is allowed for a certain website. More information: Wiki DNS CAA
+
+**Free certificates from Let’s encrypt**
+Let’s encrypt is a free, automated and open Certificate Authority. It allows you to create valid certificates for the websites that you control. By following and implementing a certain protocol, your identity is checked and a certificate will be issued. The certificates are free of charge and this is done to stimulate the use of authorised certificates and to lower the use of self-signed certificates on the internet. Certificates are valid for 90 days, so they need to be automatically renewed. (Which makes sure that the proof of identity/ownership also takes place frequently)
+
+A big problem in all kinds of systems is the use of default configurations. E.g. default username/passwords in routers, default passwords for keystores, default unencrypted mode, etc.
+
+**Java cacerts**
+Did you ever changeit? Putting a password on the cacerts file has some implications. It is important when the trusted certificate authorities need to be protected and an unknown self signed certificate authority cannot be added too easily.
+
+**Protecting your id_rsa private key**
+Are you using an ssh key for GitHub and or other sites and are you leaving it unencrypted on your disk? Or even on your cloud drive? By default, the generation of an ssh key pair leaves the private key unencrypted. Which makes it easy to use and if stored in a place where only you can go, it offers sufficient protection. However, it is better to encrypt the key. When you want to use the key, you would have to provide the password again.
+
+**SSH username/password to your server**
+When you are getting a virtual server from some hosting provider, there are usually a lot of not so secure defaults. One of which is that ssh to the server runs on the default port 22 and allows username/password attempts. One of the first things you should do, is to change the configuration that you cannot ssh as user root, and you cannot ssh using username/password, but only with a valid and strong ssh key. If not, then you will notice continuous brute force attempts to login to your server.
+
+**Assignment**
+In this exercise you need to retrieve a secret that has accidentally been left inside a docker container image. With this secret, you can decrypt the following message: U2FsdGVkX199jgh5oANElFdtCxIEvdEvciLi+v+5loE+VCuy6Ii0b+5byb5DXp32RPmT02Ek1pf55ctQN+DHbwCPiVRfFQamDmbHBUpD7as=. You can decrypt the message by logging in to the running container (docker exec …​) and getting access to the password file located in /root. Then use the openssl command inside the container (for portability issues in openssl on Windows/Mac/Linux) You can find the secret in the following docker image, which you can start as:
+
+docker run -d webgoat/assignments:findthesecret
+echo "U2FsdGVkX199jgh5oANElFdtCxIEvdEvciLi+v+5loE+VCuy6Ii0b+5byb5DXp32RPmT02Ek1pf55ctQN+DHbwCPiVRfFQamDmbHBUpD7as=" | openssl enc -aes-256-cbc -d -a -kfile ....
