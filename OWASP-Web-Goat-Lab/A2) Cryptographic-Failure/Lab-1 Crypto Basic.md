@@ -42,6 +42,8 @@ Basic authentication is sometimes used by web applications. This uses base64 enc
 **The HTTP header will look like:**
 **Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=**
 
+- In my case my Authorization Basic  is **"YWRtaW54OjEyMzQ1Ng=**
+
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image.png>)
 
 - Go to https://www.base64decode.org/ and decode the authorization header "YWRtaW54OjEyMzQ1Ng==". 
