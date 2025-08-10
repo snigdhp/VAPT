@@ -1,3 +1,5 @@
+**Part-1**
+
 **Concept**
 This lesson explains different types of cryptography techniques that are commonly used in web applications.
 
@@ -53,3 +55,35 @@ Basic authentication is sometimes used by web applications. This uses base64 enc
 ![alt text](<../../image/Lab-1 Crypto Basic.md/image-2.png>)
 
 ---------------------------------------------------------------------------------------------
+
+**Part-2**
+
+**Other Encoding**
+Also other encodings are used.
+
+**URL encoding**
+URL encoding is used a lot when sending form data and request parameters to the server. Since spaces are not allowed in a URL, this is then replaced by %20. Similar replacements are made for other characters.
+
+**HTML encoding**
+HTML encoding ensures that text is displayed as-is in the browser and not interpreted by the browser as HTML.
+
+**UUEncode**
+The Unix-2-Unix encoding has been used to send email attachments.
+
+**XOR encoding**
+Sometimes encoding is used as a first and simple obfuscation technique for storing passwords. IBM WebSphere Application Server e.g. uses a specific implementation of XOR encoding to store passwords in configuration files. IBM recommends to protect access to these files and to replace the default XOR encoding by your own custom encryption. However when these recommendations are not followed, these defaults can become a vulnerability.
+
+**Assignment**
+Now let’s see if you are able to find out the original password from this default XOR encoded string.
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-3.png>)
+
+- As provided the password encoded, we will use XOR encoding to find the password. 
+
+- We can use the following XOR decoder: https://strelitzia.net/wasXORdecoder/wasXORdecoder.html
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-4.png>)
+
+- **Introduce the actual password on WebGoat.**
+
+![alt text](<../../image/Lab-1 Crypto Basic.md/image-5.png>) 
