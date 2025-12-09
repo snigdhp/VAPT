@@ -34,6 +34,7 @@ That query is now vulnerable, and the stored malicious username triggers SQLi.
 Key point:
 You must parameterize both on input and when stored values are reused in SQL.
 
+---
 ## 38. Secure Password Storage
 ### Q38. How do you store passwords for applications in the database?
 
@@ -59,6 +60,7 @@ Computes hash = bcrypt(password + salt).
 
 Store: { user_id, salt, hash, algorithm, parameters }.
 
+---
 ## 39. Remote Code Execution (RCE)
 ### Q39. What is RCE? How do you test for RCE? How can it be remediated?
 
@@ -92,6 +94,7 @@ Run services under least privilege and consider sandboxing.
 
 Patch vulnerable libraries/frameworks.
 
+---
 ## 40. OS Command Injection
 ### Q40. Explain OS Command Injection.
 
@@ -116,6 +119,7 @@ If shell is absolutely necessary, use safe argument lists and strict allow-list 
 
 Run under a low-privilege OS account and use sandboxing/containers.
 
+---
 ## 41. CORS & CSRF
 ### Q41. What is CORS and SOP? Does CORS protect against CSRF?
 
@@ -141,6 +145,7 @@ CSRF only needs the victim’s browser to send an authenticated request; the att
 
 Misconfigured CORS can even expose more data to attackers.
 
+---
 ## 42. XXE (XML External Entity)
 ### Q42. Explain XXE. What causes this flaw? How do you mitigate it?
 
@@ -180,6 +185,7 @@ Validate and sanitize XML input.
 
 Prefer JSON over XML where possible.
 
+---
 ## 43. Security-Related Request Headers
 ### Q43. What are some security headers in HTTP requests?
 
@@ -209,6 +215,7 @@ X-Forwarded-For / X-Real-IP
 
 Forward client IP through proxies; important for logging and rate limiting.
 
+---
 ## 44. HTTP Methods
 ### Q44. What are various HTTP methods?
 
@@ -230,6 +237,7 @@ OPTIONS – Describe communication options (CORS preflight).
 
 TRACE – Diagnostic loopback; usually disabled.
 
+---
 ## 45. Difference Between GET, POST, PUT
 ### Q45. What is difference in GET, POST, and PUT requests?
 
@@ -259,6 +267,7 @@ Idempotent; sending the same PUT multiple times produces the same final state.
 
 Common in REST APIs for resource updates.
 
+---
 ## 46. Race Condition
 ### Q46. Explain Race Condition. How can you test for it?
 
@@ -297,6 +306,7 @@ Enforce invariants with DB constraints.
 
 Design operations to be idempotent wherever possible.
 
+---
 ## 47. Cookie Attributes / Flags
 ### Q47. Explain Cookie Attributes/Flags.
 
@@ -332,6 +342,7 @@ Expires / Max-Age
 
 Sets cookie lifetime (session vs persistent cookies).
 
+---
 ## 48. Threat Modeling
 ### Q48. What is Threat Modeling / Threat Model?
 
@@ -359,6 +370,7 @@ Define and implement mitigations.
 
 Validate that mitigations work as intended.
 
+---
 ## 49. SDLC & Security Involvement
 ### Q49. Are you aware of the SDLC? When in SDLC should you engage with developers?
 
@@ -380,6 +392,7 @@ Testing: DAST, penetration testing, SCA.
 
 Deployment & Maintenance: hardening, monitoring, patching.
 
+---
 ## 50. CI/CD & Security
 ### Q50. What is a CI/CD pipeline? Explain its role in security.
 
@@ -403,6 +416,7 @@ Use quality gates to fail builds on critical vulnerabilities.
 
 Enforce signed artifacts, review of IaC, and secure deployment configs.
 
+---
 ## 51. Classifying Web Vulnerabilities by Severity
 ### Q51. Classify some web vulnerabilities into Low, Medium, High, and Critical. Reason why.
 
@@ -432,6 +446,7 @@ Missing non-critical security headers, verbose version banners without known exp
 
 Reason: low direct impact; mainly assists in reconnaissance and attack chaining.
 
+---
 ## 52. MD5 vs Strong Hashes
 ### Q52. Known that MD5 is not the most secure hashing algorithm, why don’t we always use SHA-256 or others?
 
@@ -459,6 +474,7 @@ For passwords, we use dedicated password-hashing functions, not just SHA-256.
 
 For some internal, non-security validations, MD5 can be “good enough” as a checksum.
 
+---
 ## 53. Nginx Fronting Multiple Microservices
 ### Q53. Internet-facing Nginx is in front of multiple applications (microservice architecture) via different subdomains. What can go wrong?
 
@@ -490,6 +506,7 @@ TLS misconfiguration
 
 Wrong certs for subdomains, missing SNI, weak cipher suites.
 
+---
 ## 54. SSL Certificate vs Injection Attacks
 ### Q54. Can server SSL certificate prevent injection attacks (e.g., SQLi)? Explain.
 
@@ -505,6 +522,7 @@ Injection attacks exploit how the server processes input, not the transport chan
 
 A site can be fully HTTPS with a valid certificate and still be vulnerable to SQLi, XSS, and command injection.
 
+---
 ## 55. XSS but Blank Popup
 ### Q55. An attacker is trying to extract session cookie using XSS, but a blank popup is shown. What could be the reason?
 
@@ -518,6 +536,7 @@ alert(document.cookie) will show only non-HttpOnly cookies or be empty.
 
 So even though XSS exists, the session cookie cannot be directly read by JavaScript.
 
+---
 ## 56. Secure PDF Download
 ### Q56. Web application allows user to download their account statement in PDF. How can you securely implement this?
 
@@ -553,6 +572,7 @@ Audit logging
 
 Log who downloaded which statement and when.
 
+---
 ##  57. STRIDE
 ### Q57. What is STRIDE?
 
@@ -574,6 +594,7 @@ E – Elevation of privilege (gaining higher access)
 
 Used to systematically think through what can go wrong for each component or data flow.
 
+---
 ## 58. CIA Triad
 ### Q58. What is the CIA triad?
 
@@ -599,3 +620,5 @@ Controls: redundancy, backups, failover, DDoS protection.
 
 Example:
 “For an online banking system, confidentiality protects account data, integrity ensures transactions can’t be altered silently, and availability ensures customers can access their accounts when needed.”
+
+---
