@@ -642,14 +642,14 @@ Example: Trying Welcome@123 on 500 different usernames, then Password@123 on the
 ---
 ## 2. Key differences (at a glance)
 
-## Aspect	Brute Force Attack	Password Spraying Attack
-## Target pattern	Single / few accounts	Large number of accounts
-## Password variety	Many different passwords	Few common passwords
-## Goal	Crack specific account(s)	Get any valid account (even low-value)
-## Lockout risk	High (many failed attempts on same user)	Lower (few attempts per user, bypasses lockout policies)
-## Detection profile	Easy to spot on per-user failed login trends	Harder; failures spread across many users
-## Typical passwords used	Wordlists, permutations, full brute force	Very common, weak, or default passwords
-## Noise level	Noisy on that account	“Low and slow”; looks like normal user errors
+- Aspect	Brute Force Attack	Password Spraying Attack
+-  Target pattern	Single / few accounts	Large number of accounts
+-  Password variety	Many different passwords	Few common passwords
+-  Goal	Crack specific account(s)	Get any valid account (even low-value)
+-  Lockout risk	High (many failed attempts on same user)	Lower (few attempts per user, bypasses lockout policies)
+-  Detection profile	Easy to spot on per-user failed login trends	Harder; failures spread across many users
+-  Typical passwords used	Wordlists, permutations, full brute force	Very common, weak, or default passwords
+-  Noise level	Noisy on that account	“Low and slow”; looks like normal user errors
 
 ---
 ## 3. Why password spraying is dangerous
