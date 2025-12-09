@@ -1,94 +1,900 @@
-# Security Terminologies
-A list of Security Terminologies that every Penetration tester should know 
+# Pentesting Interview Q&A Notes
 
-Access the List from this Link : https://securitycipher.com/security-terminologies/
+This README contains structured interview questions and concise notes for network/web penetration testing, security fundamentals, and related tooling.
 
-| Terminology  | Description |
-| --------- | ------------- |
-| Cross-Site-Script (XSS)	 | XSS is a type of injection attack that occurs when malicious code is injected into your web application via user input. This can allow attackers to steal cookies, access sensitive information, redirect users, etc. |
-| SQL Injection |	SQL Injection is a form of injection attack where data entered into a web application forms a query string that is sent to a database server. An attacker may use this vulnerability to extract confidential information from databases, deface websites, delete data, or even modify transactions.
-| (Cross-Site Request Forgery (CSRF) |	CSRF is a type of request forgery attack that exploits a trusted session between a victim and a website. By manipulating the trusted session, an attacker can trick the victim into performing actions against their own interests.
-| Strict-Transport-Security (HSTS) |	HTTPS stands for Hypertext Transfer Protocol Secure. This protocol was designed to ensure that data sent between two computers is encrypted. When using HTTPS, the connection between your browser and website's server is secure. HSTS is a security measure that forces browsers to use only secured connections to websites. This helps prevent man-in-the-middle attacks, where someone can intercept and read your traffic without being detected.
-| (Open Web Application Security Project) | OWASP	OWASP (Open Web Application Security Project) is a community-driven open standard that helps organizations identify, analyze, and mitigate application security risks. OWASP provides free resources like guides, tools, training, events, and forums to help developers, testers, architects, and other IT professionals understand and effectively secure their applications.
-| DevSecOps |	DevSecOps is a concept where developers and operations work together to deliver secure software faster.
-| Jenkins |	Jenkins is a free open-source automation tool that can help you automate your workflow. Jenkins is a continuous integration server, meaning that it runs automated tests on your code before each commit. This helps ensure that your code works properly before you push it to GitHub.
-| OWASP ZAP |	ZAP stands for Zero Access Pathway. This project was created to help prevent attacks from malicious code that can be embedded into websites. By using this tool, we are able to scan our website for any vulnerabilities that may exist.
-| OWASP Top 10 |	The OWASP Top 10 is a list of the most common web application security risks. These risks include SQL injection, cross-site scripting, session management, insecure deserialization, directory traversal, parameter tampering, path disclosure, open redirects, insecure direct object references, and many others.
-| Username eunumeration	| Username enumeration is a technique that allows attackers to discover usernames from user accounts. This can be done through brute force attacks, dictionary-based attacks, or even social engineering. In this video we'll discuss how to perform username enumeration using Burp Suite.
-| Directory Traversal |	Directory Traversal is the ability to access files that are not normally accessible. This can be done through the use of tools like FTP (File Transfer Protocol) or SSH (Secure Shell). Directory traversal is used to gain access to restricted directories.
-| Secure Shell Protocol (SSH) |	Secure Shell Protocol is used to transfer files securely over a network. SSH is a protocol that allows users to log into remote computers using passwords or public/private keys. SSH can be used to connect to any computer running a Unix-like operating system.
-| Secure Copy Protocol (SCP)	| Secure Copy Protocol is a file transfer protocol that uses encryption to ensure data integrity while being transferred between two hosts. SCP is commonly used to copy files from one host to another.
-Simple Network Management Protocol (SNMP)	| Simple Network Management Protocol is a standard communications protocol for managing devices on IP networks. SNMP provides information about network elements like routers, switches, servers, etc.
-Hypertext Transfer Protocol Secure (HTTPS) |	This protocol is used to transfer data securely over the internet. When you are using your browser to access websites, the website's address begins with https:// instead of http://. This means that any information sent from the site to your computer is encrypted, making sure that no one can read it while it travels across the web.
-Hypertext Transfer Protocol (HTTP)	|This protocol is used when you want to visit a website. Your browser uses this protocol to communicate with the server.
-Simple Mail Transport Protocol (SMTP)	|This protocol is usually used to send emails.
-Local File Inclusion (LFI)|	Local File Inclusion is a type of security vulnerability that allows attackers to include files from remote locations into web pages served by vulnerable servers. This can allow them to steal sensitive information like usernames, passwords, credit card details, etc. LFI attacks are usually carried out through malicious links in emails or websites.
-Remote File Inclusion (RFI)|	Remote File Inclusion is similar to local file inclusion but instead of including files locally, the attacker includes files remotely. This means that they don't need to have access to your server at all. They just need to know the path to the file. RFI attacks are usually carried through cross site scripting vulnerabilities.
-Remote Code Execution (RCE)|	Remote code execution occurs when a malicious actor executes code remotely without having direct access to the system. This can occur via a variety of vectors, including web-based attacks, email attachments, infected USB devices, etc. There are many different ways that remote code execution can take place. Some common vectors include: Web Application Attacks, Email Attachments, Malicious Links, Infected USB Devices, and Other Methods.
-Wordpress|	WordPress is a free and open-source content management system (CMS) that allows users to easily publish their web pages or blogs online. WordPress was created by Automattic, LLC, the company behind the popular blogging platform Tumblr. WordPress is used by millions of people across the globe and has been downloaded over 100 million times.
-Joomla|	Joomla! ® is free software released under the GNU/GPL license. Joomla!® was created to provide developers with a robust, reliable, and powerful content management system (CMS) platform that can be used to create websites and web applications. Joomla!™ is open-source software, meaning that its code is freely available for anyone to use and improve upon.
-Strapi	|Strapi is a free open-source platform that makes developing your own web applications easy. It's built using ReactJS (a JavaScript library) and GraphQL (an API query language). You can use any programming language to develop plugins for Strapi. Strapi is used to create modern websites and mobile apps. With its modular architecture, you can easily add features like authentication, user management, data storage, email sending, payment processing, analytics, etc.
-Graphql|	GraphQL is a query language that allows you to define how data should be returned from your API. This is done through a simple interface where you can define what fields are returned and how they are formatted. You can then use this information to create client-side applications that consume your API. Apollo Client is a library that makes working with GraphQL easy. It provides a number of features including caching, subscriptions, error handling, and much more.
-Java Script|	JavaScript is a programming language that can be used to create interactive web pages. JavaScript is embedded into HTML (HyperText Markup Language) documents to add interactivity and animation to your website. In this tutorial we are going to learn how to embed a simple Java Script code into our HTML document.
-Wireshark|	Wireshark is a network protocol analyzer that can capture packets from any interface on your computer. You can then use this information to analyze traffic on the network. This tool is useful for troubleshooting problems on the local area network (LAN) and helps identify what type of data is being sent over the wire.
-Aircrack-ng|	This is a free software tool that allows you to crack WEP/WPA/WEP2 networks using only your wireless card. This program has been tested on Windows XP SP2, Vista, 7, 8, 10 and Mac OS X 10.5.8.
-Github|	GitHub is a web-based hosting service that allows users to create online repositories where they can store files and share them with others. This allows developers to collaborate and work together easily from anywhere at any time. GitHub was founded in 2008 by Chris Wanstrath and PJ Hyett.
-Git|	Git is a version control system (VCS) used to manage changes to software code. A VCS helps programmers keep track of who changed what, when, and why. Git was created by Linus Torvalds while he was working for Novell in 2004.
-Kali Linux|	Kali Linux is a free open-source security distribution based on Debian GNU/Linux. Kali Linux was created by Offensive Security, Inc., a U.S.-based computer security company specialising in penetration testing and ethical hacking.
-Windows |Windows Operating System (WOS) is a computer operating system developed and marketed by Microsoft Corporation. It was first released in 1985 as MS-DOS 6.0 and has since been updated several times. WOS is currently used on personal computers, servers, embedded systems, mobile devices, video game consoles, and other computing platforms.
-Directory Listing	|Directory listing vulnerabilities are a common problem that can occur when web servers are configured incorrectly. This type of vulnerability allows hackers to gain access to sensitive information about your website. A hacker may use this information to steal your customers' personal data, sell their information, or even shut down your site completely.
-DOM Cross Site Scripting (DOM XSS)|	DOM Cross Site Scripting (XSS) is a type of security vulnerability that occurs when malicious code is injected into a web page's Document Object Model (DOM). This can allow attackers to steal cookies, inject ads, redirect users, or access sensitive information.
-Java Deserialization|	The Java serialization mechanism allows objects to be saved to files or streams. This can be used to store data that needs to be sent over networks or stored on disk. However, this feature has been exploited before. In fact, the first time I heard about this was back in 2004, but it wasn't until recently that I started to pay attention to this issue again. How does it work? Serialization works by converting an object into a stream of bytes. These bytes are then written to a file or streamed to other applications. When reading these bytes, the application reads them from the file or stream and converts them back into an object. What's the problem? This method of storing information is great, but it has some drawbacks. One of the biggest problems is that if the original object isn't properly initialized, it could cause a memory leak. If the object contains pointers to other objects, they may not be deallocated properly. Another problem is that the serialized form of the object doesn't contain any information about its type. This means that if the object is converted back into its original state, it won't know what kind of object it is.
-Open Redirection|	The open redirect vulnerability allows attackers to use malicious URLs that point to any website other than the intended target. This can allow them to steal cookies, inject malware into your browser, or even change the content of the page you are viewing.
-Session Fixation|	Session fixation occurs when an attacker takes control of a user's session ID. They may then impersonate the user by logging into websites they have access to.
-Server-Side Template Injection (SSTI)|	Server side template injection is a technique that allows attackers to inject malicious code into web pages without having access to the server's filesystem. This can allow them to bypass certain security controls, like firewalls, and gain remote control over vulnerable servers. SSTI works by using HTML tags to insert content from external files. These files are typically stored on the same server as the page being served, but they could also be stored on other servers. When a user requests a page containing an embedded file, the browser first sends a request to the server hosting the page. If the server does not have a copy of the file, it returns a 404 error message. However, if the server has a copy of the file and it contains malicious code, the server may serve it instead of returning a 404 error.
-Host Header Injection|	Host Header Injection is a technique that allows attackers to inject malicious code into web pages served by vulnerable servers. This can allow them to steal cookies from other users, redirect victims to phishing sites, or even install malware on their computers. IT is used to deliver ransomware, exploit banking websites, and launch DDoS attacks. An attacker can use this flaw to create a specially crafted request that will cause the application to perform actions on behalf of the user.
-X-Frame-Options| 	X-Frame-Options HTTP Response Header allows web browsers to prevent clickjacking attacks against pages that use framesets. This prevents malicious sites from tricking users into clicking links that take them out of their intended frame.
-Content-Type|	The content type is used to identify the MIME format of the data being transmitted. This information can be used by a web server to determine how to handle the request.
-X-Content-Type-Options|	The header allows the client to specify that they want to prevent caching of the document. In other words, if the browser requests this document again, it should not use its cached version but instead send a fresh copy back to the user.
-X-XSS-Protection|	The header prevents cross site scripting attacks by setting the value of the 'script' attribute to 'false'. If a malicious script is injected into your page, this option will prevent it from executing.
-Content-Security-Policy	|Content Security Policy (CSP) is a W3C specification that allows web applications to declare what resources they are allowed to load from. This helps prevent cross-site scripting attacks. CSP can be used to restrict access to sensitive data like credit card numbers, passwords, etc.
-JSON Web Token (JWT)|	JSON Web Token (JWT) is a JSON-based data structure that can be used to encode information about an identity, including its claims. JWTs are commonly used in OAuth 2.0 access tokens and OpenID Connect ID Tokens. They are based on the concept of signing and encrypting messages using HMAC SHA-256 hashing algorithms.
-Security Assertion Markup Language (SAML)|	SAML is a standard that allows users to authenticate themselves to web services using their username and password. This is useful if your website uses a third-party service that requires authentication. SAML is used for Single Sign On (SSO) where a user logs into a single application and then can access other applications without having to log in again. 
-OAuth	|OAuth stands for Open Authentication. It's a protocol that allows third-party systems (such as social media sites) to access your information without having to ask for your username and password. This is especially useful if you're using multiple accounts from different websites. OAuth is used to authorize requests from clients, usually web applications, to obtain tokens that can be exchanged for a user's basic profile information. These tokens are short lived, typically only good for a few minutes, but they do allow the application to request specific pieces of data without exposing the user's credentials.
-Cross-Origin Resource Sharing (CORS)|	The Cross-Origin Resource Sharing (or CORS) is a standard that allows web servers to specify what origins are allowed to access their resources. This can help prevent cross-site scripting attacks. When a website wants to load content from another domain, they have to use either JSONP or XMLHttpRequest. These methods allow JavaScript code to make requests to other domains, but they both have some drawbacks. In order to implement CORS, the server needs to add a header to its responses. This header contains information about which origins are allowed to access the resource.
-HTML Injection|	The HTML injection vulnerability allows an attacker to inject arbitrary HTML into any page loaded from this domain.
-HTTP Methods|	HTTP Methods are used to communicate with a web server. They define how the client can interact with the server. There are five different types of HTTP methods that are defined as follows: GET, POST, PUT, DELETE, and HEAD. These methods are used to perform operations like retrieving data from a database, updating information, deleting records, etc.
-Cookies	|Cookies are temporary files that store information about your browsing activity on a website. They can be used to track what pages you visit and how long you spend on each page. Cookies are usually deleted once you close your browser but some websites may use them to keep track of your activities over time.
-Subdomain Takeover|	Subdomain takeover vulnerabilities are a type of attack that can occur when a website is compromised and the attacker gains access to other subdomains on the same domain name. This allows them to gain control over those subdomains and use them to spread malware, steal information, or even redirect users to malicious websites.
-Malware	|Malware is a term used to describe malicious software that can cause harm to your computer. This includes viruses, worms, trojans, adware, spyware, rootkits, etc.
-Virus	|A virus is a type of malware that infects your computer's operating system. Viruses are usually spread through email attachments, websites, or other types of files. Once infected, they replicate themselves over and over again until they have taken control of your entire hard drive.
-Worms	|Worms are small pieces of code that can copy themselves from one computer to another. They do this by using the internet to find computers that are vulnerable to them. Once they find a target, they attach themselves to the computer and wait for instructions. These instructions could be anything from sending spam emails to stealing personal information.
-Adware	|Adware is software that has been designed specifically to infect your computer without your knowledge or consent. This software can cause problems ranging from slow performance to complete system failure. Adware is usually bundled with other programs and often comes pre-installed on computers. Once installed, adware may continue to run even after you have uninstalled the original program
-Spyware	|Spyware is software that is designed to monitor what you do online. Some spyware is used to steal personal information from your computer while others are used to track your internet activity.
-Rootkits	|Rootkits are malicious software that can infect your computer without your knowledge. They are usually installed through other malware programs like viruses, Trojans, etc. Rootkits are designed to hide their existence from the user and make them undetectable. Once they have been installed, rootkits can monitor your activities and steal information from your system. This includes passwords, banking details, credit card numbers, personal data, etc.
-Amazon Web Services (AWS) |	Amazon Web Services (AWS)nAmazon Web Services is a cloud computing service that provides Internet-based resources through virtual machines. AWS offers several different types of services including Elastic Compute Cloud (EC2), Simple Storage Service (S3), Elastic Block Store (EBS), Relational Database Service (RDS), Auto Scaling, Elastic Load Balancing, and CloudFormation. These services are designed to make it easy to set up, operate, and scale infrastructure.
-Microsoft Azure |	Microsoft Azure is a cloud computing platform that allows users to build and deploy applications online. This helps businesses reduce costs and increase productivity. Microsoft Azure provides its customers with a wide range of services including web hosting, database management, email, storage space, and many others.
-Google Cloud Platform (GCP) |	Google Cloud Platform (GCP), is a fully managed service that provides developers with a suite of tools to build, deploy, and manage applications online. GCP offers a variety of services including storage, networking, databases, analytics, machine learning, messaging, APIs, and many others.
-Alibaba Cloud	Alibaba Cloud | is a cloud computing service platform provided by Alibaba Group Holding Limited. It was launched in 2009 and has been expanding rapidly since then. It provides services including Infrastructure-as-a-Service (IaaS), Platform-as-a-service (PaaS) and Software-as-a- Service (SaaS).
-Oracle Cloud |	Oracle Cloud is a service that provides computing resources through the Internet. Oracle Cloud offers services like storage, databases, networking, and other IT infrastructure services. It is a platform-as-a-service (PaaS) offering from Oracle Corporation.
-Secure Socket Layer (SSL) |	This protocol was developed to provide secure communication between web browsers and servers. In other words, this protocol provides encryption and authentication of data that is sent over the internet. SSL uses public-key cryptography. Public-key cryptography relies on two keys: a public key and a private key. The public key can be shared freely while the private key should only be known to the owner. When a user wants to send information to a server, they use their own private key to encrypt the message. Only the recipient has access to the private key, so they are able to decrypt the message using the public key.
-File Transfer Protocol |	The file transfer protocol (FTP) is a standard way to move files between computers over a network. FTP is used to upload and download files from a server to your computer. You can use this method to send large amounts of data to and from your website.
-Secure File Transfer Protocol (SFTP) | 	Secure File Transfer Protocol (SFTP) is an encrypted version of the File Transfer Protocol (FTP). SFTP uses public-private key encryption to encrypt communications between client/server. This means that only the user who has the private key can decrypt the communication.
-Demilitarized zone (DMZ) |	Demilitarized Zone (DMZ) is a term used to describe a portion of a network that has been separated from the rest of the network to prevent unauthorized access to sensitive information. DMZs are typically located between two firewalls, one internal and one external. This separation prevents any data from being transferred between the networks.
-Firewall |	Firewalls are used to protect your computer from outside attacks. They can be either software-based (e.g., antivirus) or hardware-based (e. g., firewalls). Firewall is a type of gateway that controls incoming and outgoing network connections and allows only certain kinds of data to enter or leave a computer.
-Intrusion Detection System (IDS) |	Intrusion detection system (IDS) is a network security device that monitors computer networks for unauthorized activity. An IDS can detect intrusions at various stages of their life cycle. Intrusions are detected using different methods including signature matching, anomaly detection, protocol analysis, host-based monitoring, and misuse prevention.
-Intrusion Prevention System (IPS) |	Intrusion prevention system (IPS) is a network security device that monitors traffic entering or leaving a protected area. An IPS can detect and block unauthorized access attempts to a computer network.
-Internet Service Provider (ISP) |	Internet Service Provider (ISP) is a company that provides access to the internet. ISPs are often referred to as broadband providers. There are many different types of ISP's including cable companies, satellite companies, DSL providers, wireless carriers, etc.
-| Virtual Private Network (VPN) |	A virtual private network (VPN) is a secure connection between two devices that allows them to communicate securely over a public network. A VPN creates a secure tunnel through the internet from your computer to a remote server allowing you to access resources on the other side of the internet without being exposed to hackers.
-| Domain Name |	Domain names are used to identify Internet resources, such as websites, computer servers, and other services that are connected to the Internet. A domain name consists of a series of characters that identifies a server's IP address. Domain names are organized into various top-level domains (TLDs), including.com,.net,.org, and many others.
-| Dynamic Host Configuration Protocol (DHCP) |	This protocol allows your computer to automatically obtain IP addresses from a central server. DHCP is used to assign IP addresses to computers that are connected to a network.
-| IP Address |	An IP address is a unique identifier that identifies each device connected to the internet. Every device has its own IP address, which allows computers to communicate with each other over the internet. An IP address consists of four numbers separated by dots (e.g., 192.168.1.1). Each number represents a different section of the network. The first three sections are called octets. Octet 1 is the network ID, octet 2 is the subnet mask, and octet 3 is the host ID.
-| Botnets |	Botnets are networks of infected computers that are used to control other computers remotely. They can be used to perform any number of malicious activities, including sending spam email, stealing data, launching denial-of-service attacks, and even committing credit card fraud.
-| Denial of Service	Denial of Service (DoS) | attacks are a type of cyber attack that involves flooding a target computer system with requests from multiple sources until it becomes overwhelmed and either crashes or slows down to a crawl. This can cause significant damage to the targeted network.
-| Distributed Denial-of-Service (DDoS) |	Distributed Denial-of-Service (DDoS) attacks involve sending malicious traffic from many different computers at once. This makes them harder to detect and stop than single-source DoS attacks.
-| Phishing |	Phishing is a type of social engineering that involves sending emails to people pretending to be someone else (the “victim”) asking them to perform some action on their behalf. This can include requesting personal information like usernames, passwords, credit card details, etc.
-| Social Engineering |	Social Engineering is the act of manipulating people into doing things they normally wouldn't do. This can either be done through deception or manipulation. Social engineering is used in many different ways, but some common examples are phishing (faking emails), phone scams, and even physical attacks. In this video we discuss how social engineering is being used today by hackers around the world to gain access to sensitive data and systems. We then explore the different ways that social engineering can be used to manipulate people.
-| Encryption	|Encryption is the process of converting data into a form that can only be read by those who have access to a specific code or key. This is done through the use of mathematical algorithms.
-| Hashing	| Hashing is the act of using a computer program to create a unique hash code from a string of text. This hash code can then be used to identify that same string of text later on. Hashing is typically used to make sure that two different strings are not identical.
-| Clickjacking |	Clickjacking is a type of attack that involves tricking users into clicking on links/buttons that take them to malicious websites. This can happen if the user is tricked into thinking they are visiting a legitimate website but instead end up at a phishing site where their personal information is stolen.
-| Dark Web |	The Dark Web is a hidden section of the internet that requires special software to access. This area of the web is used primarily for illegal activities such as buying and selling drugs, weapons, counterfeit goods, hacking into private databases, and other criminal activity.
-| Darknet |	Darknet is a term used to describe the hidden parts of the internet that are not indexed by search engines. These websites can be accessed through Tor (The Onion Router) browser, which allows users to browse anonymously. Darknet markets have been around since before Bitcoin was even created. They offer everything from drugs, weapons, stolen credit card details, and other illicit goods and services.
-| Bitcoin |	Bitcoin is a cryptocurrency that was created in 2008 by Satoshi Nakamoto. It uses peer-to-peer technology to facilitate instant payments. The total supply of Bitcoins is capped at 21 million coins, though this limit can change over time. Bitcoin offers low transaction fees, minimal volatility and allows users to send money across the world without borders or intermediaries.
-| Active Directory	| Active Directory (AD) is a Microsoft technology that provides centralized management of user accounts and resources across multiple devices and platforms. AD allows users to access their network resources from any device, anywhere at any time.
-| Coverity |	Coverity is a software testing tool that helps developers identify potential vulnerabilities in their code before they are released into production. Coverity uses static analysis techniques to detect coding errors, including memory leaks, buffer overflows, race conditions, and other common programming mistakes.
+---
+
+## 1. Starting a Pentest – Information Gathering & Enumeration
+
+### Q1. How do you start hacking a target? What are information gathering and enumeration?
+
+**Answer / Notes:**
+
+- I don’t start by attacking directly. First, I do **Information Gathering (Reconnaissance)**:
+  - Collect publicly available data **without touching** the target systems.
+  - Examples: WHOIS records, DNS records, subdomains, OSINT, emails, technology stack, public IP ranges.
+- Next, I move to **Enumeration**:
+  - Actively interact with the target systems:
+    - Port scanning, service detection, banner grabbing.
+    - User enumeration, share enumeration, configuration discovery.
+- Together, **recon + enumeration** give a clear map of:
+  - Which hosts exist, which ports are open, which services and versions are running, which users and configurations are exposed.
+- Only after this mapping do I identify potential weaknesses and plan exploitation.
+
+---
+
+## 2. Phases of Network Penetration Testing
+
+### Q2. What are the typical phases of Network Penetration Testing?
+
+**Answer / Notes:**
+
+1. **Planning & Scope**
+   - Define scope, targets, rules of engagement, timelines.
+   - Obtain legal approvals and written authorization.
+
+2. **Information Gathering**
+   - Passive reconnaissance and OSINT.
+   - Discover domains, IP ranges, technologies, public data.
+
+3. **Scanning & Enumeration**
+   - Use tools like Nmap/Masscan for port scanning.
+   - Service and version detection, OS fingerprinting.
+   - Enumerate users, shares, services, and configurations.
+
+4. **Vulnerability Analysis**
+   - Map discovered services to known vulnerabilities and misconfigurations.
+   - Use vulnerability scanners and manual analysis.
+
+5. **Exploitation**
+   - Attempt to exploit validated vulnerabilities.
+   - Gain initial access, respecting scope and rules.
+
+6. **Post-Exploitation**
+   - Privilege escalation, pivoting, lateral movement (if allowed).
+   - Data access, impact demonstration, persistence (controlled and documented).
+
+7. **Reporting**
+   - Document findings, impact, PoC steps, and remediation guidance.
+   - Provide both technical and management-level summaries.
+
+---
+
+## 3. Nmap Usage
+
+### Q3. Which Nmap flag is used for version detection?
+
+**Answer / Notes:**
+
+- Use **`-sV`** for **Service Version Detection**.
+- It probes open ports to determine:
+  - Which service is running.
+  - Which version (e.g., `Apache httpd 2.4.41`).
+
+### Q4. What is the difference between `-v` and `-V` in Nmap?
+
+**Answer / Notes:**
+
+- **`-v` (lowercase v)** – **Verbosity**
+  - Shows more detailed output during scans:
+    - Open ports as they are found.
+    - Scan progress updates, additional logging.
+- **`-V` (uppercase V)** – **Nmap Program Version**
+  - Prints Nmap’s own version and exits.
+  - Used to check which Nmap release is installed.
+
+---
+
+## 4. SQL Injection & RCE
+
+### Q5. Can SQL Injection lead to Remote Code Execution (RCE)?
+
+**Answer / Notes:**
+
+- **Yes**, SQL Injection **can** lead to RCE, but not always.
+- It depends on:
+  - Database configuration and privileges.
+  - Whether dangerous features are enabled, such as:
+    - `xp_cmdshell` on SQL Server.
+    - Ability to write files to webroot (web shell).
+    - Ability to load extensions or UDFs.
+- If the database can:
+  - Execute OS commands.
+  - Read/write critical system files.
+- Then SQLi can escalate from a **database-level issue** to **full server compromise**.
+
+---
+
+## 5. Black-Box vs White-Box Pentesting
+
+### Q6. What is the difference between Black-Box Pentesting and White-Box Pentesting?
+
+**Answer / Notes:**
+
+- **Black-Box Pentesting:**
+  - Tester has **no prior internal knowledge** of the system.
+  - Only public-facing information is available (websites, public IPs).
+  - Simulates an **external attacker**.
+  - Focus on discovering vulnerabilities from an outsider’s perspective.
+
+- **White-Box Pentesting:**
+  - Tester has **full internal knowledge**:
+    - Source code, architecture diagrams, credentials, configs.
+  - More like an **internal security review**.
+  - Helps identify deeper logic and code-level vulnerabilities efficiently.
+
+---
+
+## 6. Vulnerability Scanners
+
+### Q7. Have you worked with Nessus / Qualys?
+
+**Answer / Notes:**
+
+- **Yes**, with **ServiceNow context**:
+  - Ingesting Nessus/Qualys scan results into ServiceNow.
+  - Using them to populate Vulnerability Response or ITSM records.
+  - Driving remediation workflows and dashboards based on scanner findings.
+
+### Q8. What are some open-source alternatives to Nessus or Qualys?
+
+**Answer / Notes:**
+
+- **OpenVAS / Greenbone** – Full-featured open-source vulnerability scanner.
+- **Nmap + NSE scripts** – For targeted vulnerability and service checks.
+- **Nikto** – Open-source web server vulnerability scanner.
+
+---
+
+## 7. Vulnerability Rating & CVSS
+
+### Q9. How do you rate vulnerabilities? Explain the scoring / framework.
+
+**Answer / Notes:**
+
+- I typically use **CVSS (Common Vulnerability Scoring System)**.
+- CVSS provides a **0.0–10.0** score based on:
+  - **Exploitability**:
+    - Attack vector (network, local).
+    - Attack complexity.
+    - Required privileges.
+    - User interaction.
+  - **Impact**:
+    - Confidentiality.
+    - Integrity.
+    - Availability.
+- Scores are categorized as:
+  - **Low**, **Medium**, **High**, **Critical**.
+- Example:
+  - RCE on internet-facing server → **CVSS 9.8 (Critical)** → needs immediate remediation.
+  - Local privilege escalation on internal system → **CVSS ~6.5 (Medium)** → patch in next maintenance window.
+
+---
+
+## 8. Tools Used in Network Pentesting
+
+### Q10. Name some tools you use in Network Pentesting.
+
+**Answer / Notes:**
+
+**Scanning & Enumeration:**
+- `Nmap` – Port scanning, service detection, OS fingerprinting.
+- `Masscan` – Very fast port scanner for large IP ranges.
+- `Netcat` / `Ncat` – Banner grabbing, simple client/server sockets.
+
+**Vulnerability Scanning:**
+- **OpenVAS** – Open-source vulnerability scanning.
+- **Nessus / Qualys** – Commercial vulnerability scanners.
+- **Nmap NSE Scripts** – Targeted vulnerability checks.
+
+**Passwords / Authentication:**
+- **Hydra** – Brute force attacks on FTP, SSH, SMB, etc.
+- **CrackMapExec (CME)** – AD / Windows network enumeration and auth spraying.
+
+**Exploitation Frameworks:**
+- **Metasploit Framework** – Exploits, payloads, post-exploitation modules.
+- **Exploit-DB / searchsploit** – Public exploit repository and CLI.
+
+**Network Sniffing / MITM:**
+- **Wireshark** – Network packet capture and protocol analysis.
+- **Ettercap** – Man-in-the-middle attacks (ARP spoofing, sniffing).
+
+**Web-Facing Targets:**
+- **Nikto** – Web server vulnerability scanning.
+- **OWASP ZAP** / **Burp Suite** – Interception proxy, active scanning, fuzzing.
+- **Gobuster / Dirb** – Directory and file enumeration (brute-force URLs).
+
+---
+
+## 9. Reporting Vulnerabilities After Pentest
+
+### Q11. How do you report vulnerabilities or security gaps after pentesting?
+
+**Answer / Notes:**
+
+1. **Start with Approach & Methodology**
+   - Scope, tools, techniques, and limitations.
+   - High-level description of what was tested and how.
+
+2. **For Technical Teams:**
+   - Detailed vulnerability description.
+   - **CVSS severity** and, for web issues, **OWASP category**.
+   - **Steps to reproduce** with payloads and requests/responses.
+   - **Evidence**: screenshots, logs, sample output.
+   - **Remediation guidance**: configuration changes, code fixes, patches.
+
+3. **For Non-Technical / Management:**
+   - Executive summary in plain language.
+   - Business impact: data exposure, downtime, potential financial/regulatory risk.
+   - Risk levels and remediation **priorities**.
+   - Suggested remediation roadmap and timelines.
+
+---
+
+## 10. HTTP Status Codes in Pentesting
+
+### Q12. What HTTP status codes do you monitor during a pentest? Explain some interesting ones.
+
+**Answer / Notes:**
+
+- I watch how **status codes change as I tweak payloads**.
+
+**Examples (Path Traversal & File Access):**
+- **200 OK / 206 Partial Content**
+  - If an obfuscated traversal payload suddenly returns 200/206 and the body looks like `/etc/passwd` or logs, it indicates:
+    - The payload was accepted.
+    - I may be reading a real file.
+
+- **403 Forbidden**
+  - Means the path/resource exists but access is blocked.
+  - I try:
+    - Different encodings.
+    - Alternate traversal patterns.
+    - Path obfuscation.
+  - A **403 → 200** change after obfuscation is a classic sign of weak filtering.
+
+- **404 Not Found**
+  - Indicates file/resource does not exist at that path.
+  - Used to calibrate:
+    - Number of `../` needed.
+    - Whether traversal is resolving correctly.
+
+**Other Codes I Monitor:**
+- **401 / 403 / 404 Patterns**
+  - Identify possible authorization issues and IDOR.
+- **302 / 307**
+  - Understand redirection in login/auth flows and access controls.
+- **429 Too Many Requests**
+  - Assess rate limiting on login forms, OTP endpoints, and other sensitive actions.
+
+---
+
+## 11. Zero-Day Attacks
+
+### Q13. What is a 0-Day (Zero-Day) attack?
+
+**Answer / Notes:**
+
+- **Zero-Day Vulnerability**:
+  - A previously unknown software bug with **no public patch** available.
+- **Zero-Day Exploit**:
+  - The actual code or technique used to exploit that vulnerability.
+- **Zero-Day Attack**:
+  - Real-world use of that exploit against a target.
+- Because it’s unknown to the vendor and defenders:
+  - There are no signatures or patches.
+  - Traditional AV/IDS/IPS may fail to detect it.
+
+---
+
+## 12. SSL/TLS-Related Vulnerabilities
+
+### Q14. Mention some SSL/TLS-related vulnerabilities.
+
+**Answer / Notes:**
+
+- Use of **outdated protocols**:
+  - SSLv2, SSLv3, TLS 1.0 / 1.1.
+- **Weak cipher suites**:
+  - RC4, 3DES, export-grade ciphers.
+- Poor certificate management:
+  - Self-signed certificates in production.
+  - Expired certificates.
+  - Hostname mismatch (CN/SAN not matching domain).
+- Historical issues (examples):
+  - BEAST, POODLE, CRIME, Heartbleed, etc.
+- Missing HSTS or insecure renegotiation can also be risk factors.
+
+---
+
+## 13. Nmap OS Detection
+
+### Q15. How does Nmap determine the Operating System of the target?
+
+**Answer / Notes:**
+
+- Use **`nmap -O`** or **`nmap -A`** for OS detection.
+- Nmap sends crafted TCP/IP probe packets and analyzes:
+  - TCP options.
+  - Window size.
+  - TTL values.
+  - ICMP responses.
+- It compares the responses to its internal **OS fingerprint database** to infer:
+  - OS family and version.
+  - With a confidence score.
+- Firewalls, load balancers, and middleboxes can affect accuracy.
+
+---
+
+## 14. Pass-the-Hash vs Pass-the-Ticket
+
+### Q16. What is the difference between Pass-the-Hash and Pass-the-Ticket?
+
+**Answer / Notes:**
+
+- **Pass-the-Hash (PtH):**
+  - Windows stores a **hash** (scrambled version) of the user’s password.
+  - Attacker steals the **NTLM hash**.
+  - They reuse the hash directly to authenticate to other machines.
+  - They don’t need the actual password, just the hash.
+
+- **Pass-the-Ticket (PtT):**
+  - Kerberos uses **tickets** (TGT/TGS) after authentication.
+  - Attacker steals a valid **Kerberos ticket** from memory (e.g., LSASS).
+  - Loads it on their own machine to impersonate the user and access services.
+  - Again, no need to know the actual password, just the ticket.
+
+---
+
+## 15. Reflected XSS vs DOM-Based XSS
+
+### Q17. What is the difference between Reflected XSS and DOM-based XSS? How do you mitigate them?
+
+**Answer / Notes:**
+
+- **Reflected XSS:**
+  - User input is sent to the server and **immediately reflected** in the HTML response without proper sanitization.
+  - Malicious JS payload is included in server-generated HTML.
+  - **Mitigation:**
+    - Output encoding of all user input before rendering.
+    - Proper server-side input validation.
+    - Use safe templating engines.
+    - Add a **Content-Security-Policy** to reduce impact if XSS occurs.
+
+- **DOM-Based XSS:**
+  - Vulnerability exists entirely in **client-side JavaScript/DOM manipulation**.
+  - Attacker-controlled data from the DOM (URL, hash, postMessage, etc.) is passed to dangerous sinks like `innerHTML` and `document.write`.
+  - **Mitigation:**
+    - Avoid dangerous sinks; use `.textContent` and safe APIs.
+    - Treat all data from location/URL as untrusted.
+    - Use robust sanitization libraries when HTML is allowed.
+    - Reinforce with a strong CSP.
+
+---
+
+## 16. Security Headers & CSP
+
+### Q18. What are important security headers? What is CSP and how does it mitigate XSS?
+
+**Answer / Notes:**
+
+Key security headers:
+
+1. **Strict-Transport-Security (HSTS)**
+   - Enforces HTTPS-only connections.
+   - Example:
+     ```http
+     Strict-Transport-Security: max-age=31536000; includeSubDomains
+     ```
+
+2. **Content-Security-Policy (CSP)**
+   - Defines which sources are allowed for scripts, images, styles, etc.
+   - Acts as a **security rulebook** for the browser.
+   - Primary purpose: mitigate **XSS** and similar injection attacks.
+   - Example:
+     ```http
+     Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.cdn.com
+     ```
+   - This ensures:
+     - Only scripts from the same site or trusted CDN can run.
+     - Injected or untrusted external scripts are blocked.
+
+3. **X-Content-Type-Options**
+   - Prevents MIME type sniffing.
+   - Example:
+     ```http
+     X-Content-Type-Options: nosniff
+     ```
+
+4. **X-Frame-Options**
+   - Protects against clickjacking.
+   - Examples:
+     ```http
+     X-Frame-Options: DENY
+     X-Frame-Options: SAMEORIGIN
+     ```
+
+5. **X-XSS-Protection** (Legacy)
+   - Configured old browser XSS filters.
+   - Largely deprecated, CSP is preferred.
+   - Example:
+     ```http
+     X-XSS-Protection: 1; mode=block
+     ```
+
+6. **Referrer-Policy**
+   - Controls how much referrer info is sent.
+   - Example:
+     ```http
+     Referrer-Policy: strict-origin-when-cross-origin
+     ```
+
+7. **Cache-Control**
+   - Controls caching behavior, important for sensitive pages.
+   - Example:
+     ```http
+     Cache-Control: no-store, no-cache, must-revalidate
+     ```
+
+8. **Access-Control-Allow-Origin (CORS)**
+   - Defines which origins can access resources via AJAX.
+   - Examples:
+     ```http
+     Access-Control-Allow-Origin: https://example.com
+     Access-Control-Allow-Origin: *
+     ```
+
+9. **Default Security Headers Bundles**
+   - Frameworks (e.g., Helmet for Node.js) often enable:
+     - HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, etc.
+
+---
+
+## 17. SAST vs DAST
+
+### Q19. What is the difference between SAST and DAST?
+
+**Answer / Notes:**
+
+- **SAST (Static Application Security Testing):**
+  - Analyzes **source code or binaries** without running the application.
+  - Finds:
+    - Hard-coded secrets.
+    - Unsafe functions (e.g., raw SQL concatenation).
+    - Missing input validation, insecure APIs.
+  - Used early in development so devs can fix before deployment.
+
+- **DAST (Dynamic Application Security Testing):**
+  - Tests a **running application** from the outside (black-box).
+  - Sends real HTTP requests:
+    - Tries SQLi, XSS, path traversal, etc.
+  - Simulates an attacker interacting with the live app.
+
+---
+
+## 18. Burp Suite – HTTPS Interception & Key Tabs
+
+### Q20. How does Burp Suite intercept HTTPS traffic and what are its main tabs?
+
+**Answer / Notes:**
+
+- **Burp as MITM:**
+  - Burp acts as a **man-in-the-middle proxy** between browser and server.
+  - Burp generates its own **CA certificate**.
+  - You install Burp’s CA in the browser trust store.
+  - When you browse via Burp:
+    - Burp issues a per-domain certificate signed by its CA.
+    - Browser trusts it, allowing Burp to decrypt/encrypt HTTPS traffic.
+
+**Key Tabs / Components:**
+- **Dashboard** – High-level overview: issues, alerts, scan progress, activity.
+- **Target** – Host list and site map; set in-scope targets.
+- **Proxy** – Intercept, view, and modify HTTP(S) traffic between browser and server.
+- **Intruder** – Automated attacker/fuzzer; brute force and parameter fuzzing.
+- **Repeater** – Manually tweak and resend a single request; compare responses.
+- **Collaborator** – Detect out-of-band (OOB) issues like blind XSS, SSRF.
+- **Sequencer** – Analyze randomness of tokens (session IDs, CSRF tokens).
+- **Decoder** – Encode/decode (Base64, URL, hex, JWT segments, etc.).
+- **Comparer** – Diff two requests/responses to highlight differences.
+- **Logger** – Detailed HTTP traffic logs for review and auditing.
+- **Extensions** – Manage BApps/plug-ins to extend Burp functionality.
+- **Learn** – Tutorials and labs for learning Burp and web security.
+
+---
+
+## 19. SQL Injection – Definition & Types
+
+### Q21. What is SQL Injection and what are its main types?
+
+**Answer / Notes:**
+
+**Definition:**
+- SQL Injection is a type of attack where an attacker inserts **malicious SQL commands** into input fields.
+- If the backend concatenates input directly into SQL and executes it:
+  - Attacker can manipulate or retrieve data without proper authorization.
+  - Impact can include:
+    - Spoofing user identities.
+    - Gaining admin privileges.
+    - Tampering/deleting data.
+    - Dumping entire databases.
+    - Potential OS-level access.
+
+**Prevention:**
+- Use **prepared statements / parameterized queries**.
+- Avoid building SQL via string concatenation.
+- Use stored procedures carefully (not as a magic fix).
+- Enforce **least privilege** in database accounts.
+
+**Types of SQL Injection:**
+
+1. **In-Band SQL Injection (same channel):**
+   - **Error-Based SQL Injection**
+     - Forces DB errors that leak data (table names, columns, users).
+   - **Union-Based SQL Injection**
+     - Uses `UNION SELECT` to combine attacker queries with the original result.
+     - Data appears in the application’s normal responses.
+
+2. **Inferential (Blind) SQL Injection:**
+   - **Boolean-Based Blind**
+     - Sends conditions like `AND 1=1` vs `AND 1=2`.
+     - Observes differences in content, redirects, or response behavior.
+   - **Time-Based Blind**
+     - Uses functions like `SLEEP()` / `WAITFOR DELAY`.
+     - Slow response = condition true, fast = false.
+     - Builds data bit-by-bit based on timing.
+
+3. **Out-of-Band SQL Injection:**
+   - Database triggers **external connections** (DNS/HTTP) to attacker-controlled servers.
+   - Used when no error messages or timing channels are reliable.
+   - Exfiltrates data via network calls.
+
+---
+
+## 20. CORS vs Same-Origin Policy (SOP)
+
+### Q22. What is CORS and how does it relate to the Same-Origin Policy?
+
+**Answer / Notes:**
+
+- **Same-Origin Policy (SOP):**
+  - Browser default security rule.
+  - One origin (protocol + domain + port) **cannot read** responses from another origin.
+  - Prevents websites from reading each other’s data silently.
+
+- **CORS (Cross-Origin Resource Sharing):**
+  - Server-side mechanism to **relax SOP** for specific trusted origins.
+  - Server sends headers like:
+    - `Access-Control-Allow-Origin`
+    - `Access-Control-Allow-Credentials`
+  - Tells browser: “I allow this other origin to access my resources.”
+
+- In simple terms:
+  - **SOP** = default rule: sites cannot read other sites’ data.
+  - **CORS** = explicit permission granted by the server to certain other sites.
+
+---
+
+## 21. Authentication vs Authorization
+
+### Q24. What is the difference between Authentication and Authorization?
+
+**Answer / Notes:**
+
+- **Authentication**:
+  - Confirms **who** the user is.
+  - Example: login with username/password, MFA, SSO.
+
+- **Authorization**:
+  - Controls **what** the authenticated user can do.
+  - Example: role-based access to APIs, pages, and actions.
+
+- Sequence:
+  1. First we **authenticate** the user.
+  2. Then we **authorize** what actions they can perform.
+
+---
+
+## 22. Path Traversal & LFI
+
+### Q25. What is path traversal and how is it related to LFI?
+
+**Answer / Notes:**
+
+- **Path Traversal**:
+  - Attacker uses `../` sequences in file paths to escape the intended directory.
+  - Example:
+    ```text
+    ?file=../../../../etc/passwd
+    ```
+  - Goal: access arbitrary files on the server.
+
+- **Local File Inclusion (LFI)**:
+  - Application takes a filename from user input and **includes/reads** it.
+  - Often combined with path traversal to include sensitive files.
+  - In some cases can lead to RCE:
+    - Log poisoning + file inclusion.
+    - Including uploaded malicious files.
+
+---
+
+## 23. CSRF (Cross-Site Request Forgery)
+
+### Q26. What is CSRF, how do you exploit it, and what are the mitigations?
+
+**Answer / Notes:**
+
+- **Definition:**
+  - CSRF is an attack where a logged-in user’s browser is **tricked into sending an unwanted request** to a site using their existing cookies/session.
+  - Example: change email, change password, transfer funds without user’s consent.
+
+- **Exploitation:**
+  - Identify a **state-changing endpoint** that:
+    - Relies only on cookies for auth.
+    - Has no CSRF protection (no tokens, no origin checks).
+  - Create a malicious page with:
+    - Auto-submitting form or crafted image/script.
+  - When the victim (logged in) visits the page:
+    - Browser sends the forged request with valid cookies.
+    - The action executes as if the user requested it.
+
+- **Mitigations:**
+  - Use **CSRF tokens** (synchronizer tokens) for state-changing operations.
+  - Enable **SameSite** cookies where possible.
+  - Validate **Origin** and **Referer** headers on sensitive endpoints.
+  - Avoid using **GET** for state-changing actions (prefer POST/PUT).
+  - Utilize **framework-built CSRF protection** features.
+
+---
+
+# 27. OWASP & OWASP Top 10:2025
+
+### Q27. Heard of OWASP? What is it? Name some vulnerabilities from OWASP Top 10 2025.
+
+**Answer / Notes:**
+
+- **OWASP (Open Web Application Security Project)** is a non-profit foundation focused on improving software security.
+  - They publish free standards, tools, and guides like OWASP Top 10, ASVS, SAMM.
+
+- **OWASP Top 10:2025** (examples of categories you can mention):
+  - **Broken Access Control**
+  - **Security Misconfiguration**
+  - **Software Supply Chain Failures**
+  - **Cryptographic Failures**
+  - **Injection**
+  - **Insecure Design**
+  - **Authentication Failures**
+  - **Software or Data Integrity Failures**
+  - **Logging & Alerting Failures**
+  - **Mishandling of Exceptional Conditions**
+
+**Example (interview):**  
+“OWASP is a global non-profit that creates free security standards and tools. Their best-known project is the OWASP Top 10, which summarizes the most critical web application risks such as Injection, Broken Access Control, Security Misconfiguration, Insecure Design, and others that reflect modern AppSec issues.”
+
+---
+
+## 28. VA vs Pentest vs Red Team
+
+### Q28. What is Vulnerability Assessment, Penetration Testing, and Red Teaming? Differences?
+
+**Answer / Notes:**
+
+- **Vulnerability Assessment (VA)**  
+  - **Breadth-focused**, mainly automated scanning and manual validation.
+  - Goal: **identify, classify, and prioritize** vulnerabilities.
+  - Usually limited exploitation; outcome is a vulnerability list with severities.
+
+- **Penetration Testing**
+  - **Depth + exploitation**.
+  - Simulates an attacker within a defined scope.
+  - Proves impact via exploitation and limited post-exploitation.
+
+- **Red Teaming**
+  - **Full-scope adversary simulation**.
+  - Tests **people, processes, and technology**.
+  - Often multi-week/month, stealthy, blue team may not be aware.
+  - Aims to see how well detection and response work in practice.
+
+**Example:**  
+“If a company wants a list of weaknesses, I’d recommend a vulnerability assessment. If they want to know if someone can actually break in and what they can do, we do a penetration test. If they want to test their entire security posture including SOC detection and response, that’s a red team exercise.”
+
+---
+
+## 29. Brute Forcing Protection
+
+### Q29. How do you handle brute forcing on your application?
+
+**Answer / Notes:**
+
+Controls to mention:
+
+- **Rate limiting / throttling**
+  - Limit login attempts per IP / per account.
+  - Add delays or temporary blocks after repeated failures.
+
+- **Account lockout or step-up verification**
+  - Temporary lock account, or require CAPTCHA / OTP after X failures.
+
+- **MFA (Multi-Factor Authentication)**
+  - Even if password is guessed, attacker needs a second factor.
+
+- **Strong password policy & password blacklist**
+  - Enforce length, complexity, and block known breached passwords.
+
+- **Monitoring & alerting**
+  - Detect abnormal login failures or IP patterns and alert SOC.
+
+- **IP reputation / geo rules**
+  - Block or challenge suspicious or high-risk IPs.
+
+**Example:**  
+“For login, I combine rate limiting with CAPTCHAs and lockouts after repeated failures, enforce MFA for high-privilege accounts, and monitor login failure patterns to detect credential stuffing.”
+
+---
+
+## 30. Stateful vs Stateless & HTTP State
+
+### Q30. What is stateful and stateless in HTTP context? How does HTTP handle state?
+
+**Answer / Notes:**
+
+- **HTTP is stateless by design**
+  - Each request is independent; server doesn’t remember prior requests.
+
+- **Stateful behavior is implemented on top of HTTP** using:
+  - **Cookies** (session IDs).
+  - **Server-side session stores** (session ID maps to user state).
+  - **Tokens** (JWT/access tokens) passed with each request.
+
+- **Stateless design** (REST-style):
+  - Server does not keep per-user session.
+  - Each request carries all necessary context (e.g., JWT with claims).
+  - Easier to scale horizontally (any node can handle any request).
+
+**Example:**  
+“HTTP itself is stateless. To remember users, we issue a session cookie after login and store their session server-side. Alternatively, we use stateless JWT tokens where all info is inside the token and validated on each request.”
+
+---
+
+## 31. Hardest XSS to Detect
+
+### Q31. Which of the XSS attacks are hardest to detect and why?
+
+**Answer / Notes:**
+
+- **DOM-based XSS** is generally hardest to detect because:
+  - The payload may never reach the server; it is processed entirely in the **browser’s JavaScript**.
+  - Server logs and traditional scanners may see a perfectly normal HTTP response.
+  - Vulnerabilities live in complex client-side code, front-end frameworks, and dynamic DOM manipulation.
+
+**Example:**  
+“Stored and reflected XSS often show up in server responses and logs, so scanners and testers find them faster. DOM-based XSS hides in client-side JS, making it much harder to spot without dedicated client-side analysis and manual testing.”
+
+---
+
+## 32. Whitelisting vs Blacklisting
+
+### Q32. Do you prefer blacklisting or whitelisting? Why?
+
+**Answer / Notes:**
+
+- **Blacklisting** (denylist)
+  - Block known bad patterns (e.g., `<script>`, `DROP TABLE`).
+  - Easy to bypass with encoding and new payload variations.
+
+- **Whitelisting** (allowlist)
+  - Define exactly what is allowed (e.g., numbers only, strict regex for email).
+  - Stronger security posture because anything unexpected is rejected.
+
+**Preferred:**  
+- **Whitelisting for input validation** whenever possible.
+- Blacklists can be used as **additional layers**, but not the sole defense.
+
+**Example:**  
+“For a phone number field, I allow only digits and maybe `+`. If I try to block only bad patterns, attackers can always find a new encoding that bypasses my blacklist.”
+
+---
+
+## 33. CSRF Investigation
+
+### Q33. When investigating a CSRF attack, what are the things you look for?
+
+**Answer / Notes:**
+
+Key things to examine:
+
+- **Endpoint nature**
+  - Is it state-changing (money transfer, profile update, password change)?
+
+- **Presence of CSRF protections**
+  - CSRF token in form/body/header.
+  - Server-side validation of that token.
+
+- **HTTP method**
+  - Are sensitive operations using GET (bad) or POST/PUT/DELETE?
+  - Are they idempotent or not?
+
+- **Cookie configuration**
+  - `SameSite` attribute.
+  - `Secure` and `HttpOnly` flags.
+
+- **Origin & Referer headers**
+  - Do requests from attack PoC show a foreign origin?
+  - Does the server verify them?
+
+- **Exploit PoC**
+  - A simple HTML/JS PoC demonstrating that an action can be triggered without user intent.
+
+**Example:**  
+“I’ll replicate the reported issue using a malicious HTML page, observe whether the request includes any CSRF token and whether the server validates origin/referrer. If the action succeeds without any of these checks, it’s a confirmed CSRF vulnerability.”
+
+---
+
+## 34. CSRF with PUT
+
+### Q34. Can you perform a CSRF attack if the HTTP method is PUT, considering there is no CSRF prevention? Explain.
+
+**Answer / Notes:**
+
+- **Yes.** CSRF is about the browser sending an authenticated request, not about the method itself.
+- If:
+  - Browser can send a **PUT** request (e.g., via XHR/fetch or misconfigured CORS).
+  - The application uses cookies for auth and has **no CSRF token / SameSite / origin checks**.
+- Then a malicious website can trick a logged-in browser into sending a PUT request that changes state.
+
+**Nuance:**  
+- HTML forms natively support only GET/POST, but JavaScript (XHR/fetch) can send PUT/DELETE when allowed by CORS or same-origin.
+
+**Example:**  
+“If `/user/email` is a PUT endpoint and relies only on a session cookie, a malicious page can send a cross-site PUT request (if CORS is misconfigured) and change the user’s email without any CSRF token. That’s still a CSRF vulnerability.”
+
+---
+
+## 35. Identifying Web Server Type
+
+### Q35. How do you determine if the website is hosted on IIS, Apache, Nginx, etc.?
+
+**Answer / Notes:**
+
+Approaches:
+
+- **HTTP Response Headers**
+  - Check the `Server:` header (if not masked):
+    - `Server: nginx`
+    - `Server: Apache/2.4.57`
+    - `Server: Microsoft-IIS/10.0`
+
+- **Error / Default pages**
+  - Default 404/500 pages are often recognizable (e.g., IIS style error page).
+
+- **Fingerprinting tools**
+  - Use **Nmap with `-sV`**.
+  - Tools like **WhatWeb**, **Wappalyzer**.
+
+- **Behavior**
+  - Some subtle behaviors (header order, TLS extensions) can hint server type (used by advanced tools).
+
+**Example:**  
+“I first check the `Server` header, then confirm using Nmap service detection or WhatWeb. If headers are hidden, I look at error pages and behavior to fingerprint the stack.”
+
+---
+
+## 36. Prepared Statements & Parameterized Queries
+
+### Q36. What are prepared statements and parameterized queries (in context of SQLi)?
+
+**Answer / Notes:**
+
+- **Parameterized query / prepared statement:**
+  - SQL query with a **fixed structure**.
+  - User inputs are passed as **parameters**, never concatenated into the SQL string.
+
+**Bad example (vulnerable):**
+```sql
+query = "SELECT * FROM users WHERE username = '" + userInput + "'";
+
+**Good example (vulnerable):**
+query = "SELECT * FROM users WHERE username = ?";
+stmt  = conn.prepareStatement(query);
+stmt.setString(1, userInput);
+
+
