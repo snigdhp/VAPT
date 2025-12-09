@@ -679,31 +679,19 @@ Example: Trying Welcome@123 on 500 different usernames, then Password@123 on the
 ---
 ## 5. Mitigation strategies (for both)
 
-## High-level defenses:
-
-##Strong password policy
-
-## Enforce length + complexity + no reuse of known breached passwords.
-
-## Account lockout / throttling
-
-## Progressive delays, CAPTCHAs, or lockout after several failures.
-
-## Multi-Factor Authentication (MFA)
-
-## Even if password is compromised, attacker cannot easily log in.
-
-## Login anomaly detection
-
-## Monitor by IP, device, geolocation, impossible travel, and common password patterns.
-
-## User education
-
-## Avoid “Welcome123”, “Password@123”, “CompanyName@2025” style passwords.
-
-## Protocol hardening
-
-## Disable legacy protocols that don’t support modern auth (e.g., old IMAP/POP/SMTP auth).
+- High-level defenses:
+- Strong password policy
+- Enforce length + complexity + no reuse of known breached passwords.
+- Account lockout / throttling
+- Progressive delays, CAPTCHAs, or lockout after several failures.
+- Multi-Factor Authentication (MFA)
+- Even if password is compromised, attacker cannot easily log in.
+- Login anomaly detection
+- Monitor by IP, device, geolocation, impossible travel, and common password patterns.
+- User education
+- Avoid “Welcome123”, “Password@123”, “CompanyName@2025” style passwords.
+- Protocol hardening
+- Disable legacy protocols that don’t support modern auth (e.g., old IMAP/POP/SMTP auth).
 
 --- 
 
