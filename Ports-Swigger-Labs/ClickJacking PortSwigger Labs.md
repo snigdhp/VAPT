@@ -118,7 +118,9 @@ p {
 - Click on **“Go to exploit server”**.
 - On the exploit server page, **generate the exploit code**.
 - **Modify the `<iframe>`** in the exploit page to include the sandbox attribute, for example:  
-  ```html <iframe sandbox="allow-forms" ...>
+  ```html
+  <iframe sandbox="allow-forms" ...>
+
 
 <style>
 iframe {
