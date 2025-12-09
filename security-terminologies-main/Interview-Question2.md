@@ -622,3 +622,186 @@ Example:
 “For an online banking system, confidentiality protects account data, integrity ensures transactions can’t be altered silently, and availability ensures customers can access their accounts when needed.”
 
 ---
+
+### 1. Basic definitions
+
+## Brute Force Attack
+
+- Attacker tries many passwords against a single user account.
+    - Focus is: one username, lots of passwords.
+
+Example: Trying Password1!, Password2!, Summer2024!, Qwerty@123, etc. repeatedly on user1@example.com.
+
+- Password Spraying Attack
+
+Attacker tries a few common passwords against many user accounts.
+    - Focus is: many usernames, few passwords.
+
+Example: Trying Welcome@123 on 500 different usernames, then Password@123 on the same 500, and so on.
+
+---
+## 2. Key differences (at a glance)
+
+## Aspect	Brute Force Attack	Password Spraying Attack
+## Target pattern	Single / few accounts	Large number of accounts
+## Password variety	Many different passwords	Few common passwords
+## Goal	Crack specific account(s)	Get any valid account (even low-value)
+## Lockout risk	High (many failed attempts on same user)	Lower (few attempts per user, bypasses lockout policies)
+## Detection profile	Easy to spot on per-user failed login trends	Harder; failures spread across many users
+## Typical passwords used	Wordlists, permutations, full brute force	Very common, weak, or default passwords
+## Noise level	Noisy on that account	“Low and slow”; looks like normal user errors
+
+---
+## 3. Why password spraying is dangerous
+
+- Most organizations use account lockout or throttling (e.g., 5 failed attempts → lockout).
+    - Brute force hits that limit quickly on one account.
+- Password spraying stays under the threshold per account (e.g., 1–2 attempts per user), so:
+    - It avoids lockouts.
+- It is harder for SOC to detect via simple “failed login per user” alerts.
+    - It often succeeds because many users share common passwords (Welcome@123, Company@2025, etc.).
+
+---
+## 4. Typical detection indicators
+
+- Brute Force
+
+    - High number of failed attempts for a single username.
+    - Source IP may be single or a small set.
+    - Short time window, very bursty traffic.
+    - Password Spraying
+    - Low number of failures per user, but:
+    - Same password attempted across many accounts.
+    - Similar timing and source(s).
+    - Patterns more visible if you analyze by:
+    - “Failed login count per source IP” or “Same password hash in failed attempts across multiple usernames”.
+
+---
+## 5. Mitigation strategies (for both)
+
+## High-level defenses:
+
+##Strong password policy
+
+## Enforce length + complexity + no reuse of known breached passwords.
+
+## Account lockout / throttling
+
+## Progressive delays, CAPTCHAs, or lockout after several failures.
+
+## Multi-Factor Authentication (MFA)
+
+## Even if password is compromised, attacker cannot easily log in.
+
+## Login anomaly detection
+
+## Monitor by IP, device, geolocation, impossible travel, and common password patterns.
+
+## User education
+
+## Avoid “Welcome123”, “Password@123”, “CompanyName@2025” style passwords.
+
+## Protocol hardening
+
+## Disable legacy protocols that don’t support modern auth (e.g., old IMAP/POP/SMTP auth).
+
+--- 
+
+### 6. One-liner difference for interview
+
+Brute force: Many passwords against one user.
+
+Password spraying: A few common passwords against many users to evade lockouts.
+
+---
+## 1. Quick recap: what is rate limiting in this context?
+
+In authentication, rate limiting means:
+“Do not allow more than X login attempts in Y time window.”
+
+It can be applied on different keys:
+
+Per user account (e.g., max 5 failed attempts per user per 10 minutes)
+
+Per IP address / client (e.g., max 20 login attempts per IP per minute)
+
+Per IP + user combination
+
+Global / per subnet / per country, etc.
+
+Often combined with lockout, CAPTCHA, or exponential backoff.
+
+## 2. How brute force interacts with rate limiting
+
+Brute Force = many passwords on one account.
+
+If you have per-account rate limiting / lockout, brute force is:
+
+Very likely to hit the limit quickly.
+
+Easy to detect: “user A has 100 failed logins in 2 minutes.”
+
+Mitigation: account lockout, delay, or CAPTCHA after N failures.
+
+So:
+
+Brute force is noisy and rate limiting on a single account is usually enough to slow or block it.
+
+3. How password spraying interacts with rate limiting
+
+- Password Spraying = few passwords on many accounts.
+
+- Attack strategy is explicitly designed to bypass simple rate limits, like:
+
+- “Max 5 failed attempts per user per 10 minutes”
+
+Example:
+
+- Attacker has 1000 usernames.
+
+- They try Welcome@123 once on each username.
+
+- Per-user failures = 1 → below the per-account limit.
+
+- They wait, then try another common password on all accounts.
+
+- Unless you also have per-IP / per-origin rate limiting, the spray may:
+
+- Not trigger per-user lockouts.
+
+- Look like normal user mistakes (1–2 wrong passwords).
+    - Password spraying is a low-and-slow technique to stay under basic rate limits and lockout thresholds.
+
+## 4. How good rate limiting should be designed (to handle both)
+
+- To handle both brute force and password spraying you want:
+    - Per-account limits
+
+- Protects individual users from brute forcing.
+    - Per-IP / per-client limits
+
+- Limits total attempts from a single source.
+    - Makes password spraying harder from a single IP.
+
+- Behavioral / anomaly checks
+
+    - Many usernames from same IP in a short time window.
+
+    - Same password tried across many accounts.
+
+    - Geo / ASN-based heuristics (suspicious networks).
+
+    - Additional controls beyond rate limiting
+
+    - MFA
+
+    - CAPTCHA on suspicious patterns
+
+    - Device fingerprinting, impossible travel, etc.
+
+---
+## 5. One-liner for interview
+
+Brute force vs rate limit: Brute force is usually blocked by simple per-account rate limiting or lockout.
+
+Password spraying vs rate limit: Password spraying is designed to stay under per-account limits, so you need smarter rate limiting (per-IP, behavioral) and MFA to stop it.
