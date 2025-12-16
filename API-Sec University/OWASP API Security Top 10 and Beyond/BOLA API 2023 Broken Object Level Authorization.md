@@ -76,3 +76,6 @@ And receives:
 | **Nested object** | `POST /api/v1/user/checking`<br>`Token: UserA_token`<br>Body: `{"Account": 2222}` | `POST /api/v1/user/checking`<br>`Token: UserA_token`<br>Body: `{"Account": {"Account": 3333}}` |
 | **Multiple objects** | `POST /api/v1/user/checking`<br>`Token: UserA_token`<br>Body: `{"Account": 2222}` | `POST /api/v1/user/checking`<br>`Token: UserA_token`<br>Body: `{"Account": [2222, 3333, 5555]}` |
 | **Predictable token** | `POST /api/v1/user/account`<br>`Token: UserA_token`<br>Body: `{"data": "DfIkidf7jSdfaiacaa"}` | `POST /api/v1/user/account`<br>`Token: UserA_token`<br>Body: `{"data": "DfIkidf7jSdfa2dfaa"}` |
+
+---
+![alt text](image.png)
