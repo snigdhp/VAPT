@@ -68,6 +68,20 @@ Some API providers have infrastructure that automatically scales with the number
 - **Economic impact** due to higher infrastructure demands.
 
 ---
+## Sources of Vulnerability (Missing/Inappropriate Settings)
+
+An API can be vulnerable to **Unrestricted Resource Consumption** when the following limits are **missing** or **set inappropriately**:
+
+- Execution timeouts  
+- Max allocable memory  
+- Max number of file descriptors  
+- Max number of processes  
+- Max upload file size  
+- Number of operations in a single request (e.g., batching)  
+- Number of records in a single request (e.g., page size / limit)  
+- Third-party provider’s spending limit  
+
+---
 ## Additional Resources
 - "Availability" — Web Service Security Cheat Sheet
 - "DoS Prevention" — GraphQL Cheat Sheet
