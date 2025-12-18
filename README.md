@@ -6,7 +6,6 @@
 **Vulnerability Assessment & Penetration Testing (VAPT)** is a comprehensive curated repository of tools, learning resources, notes, cheat sheets, and practical materials for cybersecurity enthusiasts, penetration testers, and students. This repository serves as a one-stop resource to explore, practice, and master VAPT methodologies, techniques, and tools.
 
 ---
-
 ## 📌 About
 
 This repository aggregates a wide range of content related to **Vulnerability Assessment & Penetration Testing**, including:
