@@ -7,19 +7,6 @@
 
 ---
 
-## 🔐 Table of Contents
-
-- [About](#about)
-- [Repository Structure](#repository-structure)
-- [Key Features](#key-features)
-- [Getting Started](#getting-started)
-- [Use Cases](#use-cases)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
-
 ## 📌 About
 
 This repository aggregates a wide range of content related to **Vulnerability Assessment & Penetration Testing**, including:
